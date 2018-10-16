@@ -43,7 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.2\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -71,9 +80,38 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\indexpage.css" />
+    <Content Include="FCCfront\FCCfront1\bunny.jpg" />
+    <Content Include="FCCfront\FCCfront1\large_cute-easter-eggs.png" />
+    <Content Include="FCCfront\FCCfront1\quote.js" />
+    <Content Include="FCCfront\FCCfront1\quotemachine.css" />
+    <Content Include="FCCfront\FCCfront1\quotemachine.html" />
+    <Content Include="FCCfront\FCCfront2\Capture.PNG" />
+    <Content Include="FCCfront\FCCfront2\localWeather.js" />
+    <Content Include="FCCfront\FCCfront2\localWeatherApp.css" />
+    <Content Include="FCCfront\FCCfront2\localWeatherApp.html" />
+    <Content Include="FCCfront\FCCfront2\openweathermap.PNG" />
+    <Content Include="FCCfront\FCCfront4\Twitch.css" />
+    <Content Include="FCCfront\FCCfront4\Twitch.js" />
+    <Content Include="FCCfront\FCCfront4\TwitchApp.html" />
+    <Content Include="js\jquery-3.3.1.js" />
+    <Content Include="FCCfront\FCCfront3\wikiApp.css" />
+    <Content Include="FCCfront\FCCfront3\wikiApp.html" />
+    <Content Include="FCCfront\FCCfront3\wikiApp.js" />
+    <Content Include="FCCweb\FCCweb1\BuildaTributePage.html" />
+    <Content Include="FCCweb\FCCweb1\FCCtribute.css" />
+    <Content Include="FCCweb\FCCweb1\style_58898bebaf9fe.jpg" />
+    <Content Include="FCCweb\FCCweb2\BuildaSurveyForm.html" />
+    <Content Include="FCCweb\FCCweb2\survey.css" />
+    <Content Include="FCCweb\FCCweb5\BuildaPersonalPortfolioWebpage.html" />
+    <Content Include="FCCweb\FCCweb5\ppw.css" />
     <Content Include="Global.asax" />
     <Content Include="img\freecodecamp.png" />
     <Content Include="Index.aspx" />
+    <Content Include="FCCweb\FCCweb3\BuildaProductLandingPage.html" />
+    <Content Include="FCCweb\FCCweb3\hanbok.css" />
+    <Content Include="FCCweb\FCCweb3\hanbok01.jpg" />
+    <Content Include="FCCweb\FCCweb3\logo.PNG" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +133,9 @@
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
     <None Include="packages.config" />
+    <Content Include="FCCweb\FCCweb3\hanbok.scss" />
+    <None Include="Properties\PublishProfiles\LidiaDShin - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\lidiadshin - Web Deploy1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

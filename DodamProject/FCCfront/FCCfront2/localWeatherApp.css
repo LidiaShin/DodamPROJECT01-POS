@@ -1,0 +1,130 @@
+h1{
+  background: rgba(172,187,180,0.5);
+  /*background:rgba(248,197,197,0.5);*/
+  margin-left:15%;
+  margin-right:15%; 
+  font-family: 'Handlee', cursive;}
+h2{
+  font-family:'Architects Daughter', cursive;}
+
+h4{
+  font-family:'Architects Daughter', cursive;}
+
+body{ 
+  text-align:center;}
+
+.wall{
+  margin-left:15%;
+  margin-right:15%;
+  padding: 0 0 10px 0;
+  background-color: rgba(224,245,238,0.6);
+  /*background-color: rgba(252,237,237,0.6);*/
+}  
+
+.box{      
+    display: inline-table;
+    position:relative;
+    vertical-align: top;}
+    
+
+
+.left{ 
+  width:55%;
+  height:40%;
+  padding:20px;
+  border: 2px solid #777f7b;
+  }
+.right{ 
+  font-family:'Architects Daughter', cursive;
+  width:35%;
+  height:40%;
+  padding: 0 0 0 20px;
+  text-align:left;
+  border: 2px solid #777f7b;}
+.down{
+  width:90%;  
+  font-family:'Architects Daughter', cursive;
+  background-color:#d7e5dd;
+ 
+  border-radius:10px;
+}
+
+.templ{
+  width:45%;
+  height:150px;
+  margin-top:20px;
+  margin-right:10px; 
+  border: 3px solid #777f7b;}
+
+.tempr{
+  width:40%;
+  height:150px;
+  margin-top:20px;
+  font-family:'Architects Daughter', cursive;
+  border: 2px dotted #777f7b;}
+
+
+
+.tempmini{
+  display:block; 
+  margin:5px;
+  height:30%;
+  font-size:16px;}
+
+
+
+.details{
+  color:black;
+  font-size:16px;
+  font-family: 'Patrick Hand', cursive;}
+
+
+
+
+.smbox{
+  display: inline-block;
+  margin:5px;
+  width:22%;
+  height:80%;}
+
+
+
+#temp{
+font-size:100px;}
+
+.btn{
+font-size:20px;
+display:table;
+margin-left:90px;
+margin-top:10px;
+width:120px;
+height:40px;
+font-family: 'Nanum Pen Script', cursive;  
+background-color: #665c55;
+color:white;}
+
+
+
+.tempminis{
+font-size:24px;
+font-family: 'Patrick Hand', cursive;}
+
+
+#des{
+  color:#39393a;
+  font-family: 'Patrick Hand', cursive;
+  background-color:white;}
+
+#weathericon{display:inline;}
+
+
+
+.tweather{
+  font-size:15px;
+  font-family: 'Patrick Hand', cursive;
+  display:block;
+  margin:-5px;}
+
+.fc{display:inline;}
+
+

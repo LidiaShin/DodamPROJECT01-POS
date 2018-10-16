@@ -1,0 +1,119 @@
+
+<html>
+<head>
+<link href="localWeatherApp.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Handlee|Nanum+Pen+Script|Patrick+Hand" rel="stylesheet">
+<script src="../../js/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+
+<h1>
+  Local Weather App 
+</h1>
+
+<div class="wall">
+  <h2 id="loca"></h2>
+ 
+
+ <div class="left box">
+     
+ <div class="templ box">
+  
+   
+   <span id="temp"></span>
+  <div class="fc">&#8728;C </div> 
+   <span id="weathericon"></span>
+ </div>
+ 
+   <div class="tempr box">
+     <div class="tempmini box">max 
+     <span id="maxtemp" class=tempminis></span> <div class="fc">&#8728;C</div> </div>
+     <div class="tempmini box">min
+     <span id="mintemp"class=tempminis></span> <div class="fc">&#8728;C</div> </div>
+     <div class="tempmini box">
+       <span id="des"></span></div>
+   </div>
+      
+    <button class="btn">to farenheit</button> 
+     
+  </div>
+
+   <div class="right box">
+     
+     latitude <span id="lat" class="details"></span>
+     <p></p>
+ longitude <span id="long"class="details"></span>
+     <p></p>
+ humidity <span id="hum"class="details"></span> 
+     <p></p>
+ wind speed <span id="wind"class="details"></span> 
+     <p></p>
+ cloudness  <span id="cloud"class="details"></span> 
+     <p></p>
+
+ sunrise <span id="sunrise"class="details"></span> 
+     <p></p>
+ sunset <span id="sunset"class="details"></span> 
+     
+   
+
+   </div>
+  
+  
+  
+  
+  
+  <h2> Forecast </h2>
+ 
+  
+ <div>
+    <div class="down box">
+   
+      
+  <div class="smbox box">  
+ 
+  <span id="adate"></span> 
+  <span id="atime"></span> 
+  <span id="aweathericon" class="tweather"></span>
+  <span id="aweather" class="tweather"></span> 
+  <span id="atemp"></span> <div class="fc">&#8728;C </div> 
+   </div>
+      
+      
+      
+  <div class="smbox box">
+  <span id="bdate"></span> 
+  <span id="btime"></span> 
+  <span id="bweathericon" class="tweather"></span>
+  <span id="bweather" class="tweather"></span> 
+  <span id="btemp"></span> <div class="fc">&#8728;C </div>
+      </div>   
+   
+      
+ <div class="smbox box">
+  <span id="cdate"></span> 
+  <span id="ctime"></span> 
+  <span id="cweathericon" class="tweather"></span>
+  <span id="cweather" class="tweather"></span> 
+  <span id="ctemp"></span> <div class="fc">&#8728;C </div> 
+       </div> 
+   
+   
+       
+<div class="smbox box">
+  <span id="ddate"></span> 
+  <span id="dtime"></span> 
+  <span id="dweathericon" class="tweather"></span>
+  <span id="dweather" class="tweather"></span> 
+  <span id="dtemp"></span> <div class="fc">&#8728;C </div>  
+      </div>  
+      
+      
+ </div>  
+</div>
+
+
+<script src="localWeather.js"></script>
+</body>
+</html>

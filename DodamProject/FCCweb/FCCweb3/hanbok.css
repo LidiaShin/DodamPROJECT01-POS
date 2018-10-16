@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #page-wrapper {
+    position: relative;
+  }
+  /* header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #eee;
+  }
+  #title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Simonetta', cursive;
+    font-size: 60px;
+    font-weight: 900;
+  }
+  #title img {
+    margin-left: 20px;
+    height: 50px;
+    width: 50px;
+  }
+  /*navigation bar */
+  #nav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: #beacac;
+    text-align: right;
+  }
+  .nav-link {
+    float: left;
+    margin: 0 20px 0 20px;
+    text-decoration: none;
+    font-family: 'Simonetta', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #7f3c56;
+  }
+  .nav-link:hover {
+    color: red;
+  }
+  #form {
+    /*display: flex;
+     align-items: center;
+     justify-content: right;*/
+    float: right;
+    margin: 3px;
+  }
+  #email {
+    height: 24px;
+    width: 200px;
+  }
+  #submit {
+    height: 24px;
+    width: 80px;
+    border: 1px;
+    border-radius: 3px;
+    background-color: #5b2b3d;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+  }
+  /* contents section */
+  #contents {
+    margin: 120px 15% 0 15%;
+    padding: 10px;
+    background-color: #eaeaea;
+  }
+  #intro {
+    font-size: 28px;
+    font-family: 'Crimson Text', serif;
+    color: grey;
+    text-align: justify;
+  }
+  .anchor {
+    display: block;
+    height: 100px;
+    /* header's height */
+    margin-top: -100px;
+    /* header's height */
+    visibility: hidden;
+  }
+  /*subtitle for element */
+  .subtitle {
+    text-align: center;
+    font-size: 50px;
+    margin: 25px;
+  }
+  /*paragraph*/
+  .para {
+    font-size: 18px;
+    padding-right: 30%;
+    padding-left: 30%;
+    text-align: justify;
+  }
+  @media (max-width: 600px) {
+    .para {
+      font-size: 10px;
+      color: red;
+    }
+  }
+  /*user story #14*/
+  /* price : modern hanbok pictures */
+  #hanbok_showcase {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 10% 10px 10%;
+  }
+  #hanbok_showcase #hanbok1, #hanbok_showcase #hanbok2, #hanbok_showcase #hanbok3, #hanbok_showcase #hanbok4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: calc(100%  / 4);
+    margin: 20px;
+    border: 1px solid grey;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 3px;
+  }
+  /*user story #15 */
+  #hanbok_showcase img {
+    /*margin-right:auto;
+     margin-left:auto;
+     padding:5px;   
+     flex-wrap:wrap;*/
+    width: 260px;
+    height: 336px;
+  }
+  /* footer */
+  footer ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #4b3d35;
+  }
+  footer ul li {
+    float: left;
+    padding: 0 60px 0 60px;
+    font-size: 20px;
+    font-family: 'Fahkwang', cursive;
+    color: white;
+  }
+  footer #copyright {
+    float: right;
+    color: white;
+    font-family: 'Lato', cursive;
+    font-weight: 500;
+    padding-right: 10px;
+  }
+  

@@ -1,0 +1,259 @@
+.header {
+         background-color:#493c38;
+         width:100%;
+         height:70px;
+         position: fixed;
+	       top:0px;
+	       margin-left:-42px; 
+         padding-left:40px;
+  
+         font-family:Boogaloo;
+         font-size:28px;
+         line-height: 70px;       
+}
+
+a{ 
+  color: white;
+  background-color: #88847d;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+a:hover {
+  color:black;
+  background-color:#F3E1DB;
+}
+
+.anchor{
+    display: block;
+    height: 80px;       /* 헤더의 height와 동일한 값 */
+    margin-top: -70px;  /* 헤더의 height와 동일한 값 */
+    visibility: hidden;
+}
+
+.submenu1{
+  
+  color:black;
+  background-color: #F5F5DC;
+  
+  height: 500px;
+  width: 100%;
+  margin-left:-42px; 
+  margin-top:-10px;
+  
+  padding-top:80px;
+  padding-left:50px;
+ 
+  font-family:Boogaloo;
+  font-size: 40px;  
+  text-align:right;
+ 
+  vertical-align: middle;
+  line-height: 40px; 
+}
+
+.intro1{
+  
+   background-color: #dbd2c7; 
+             width: 800px;
+             height: 360px;
+             margin-top:20px;          
+             margin-left:100px; 
+             border-radius: 5px; 
+  
+  font-family:Indie Flower;
+             font-size: 20px;
+             color:#8B0000;
+             text-align:left;
+             padding-left:300px;
+             padding-right:20px;
+             padding-top:30px;
+ 
+}
+
+.intro1 img{
+  
+  border-radius: 15px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.submenu2{
+  color:black;
+  background-color: #F3E1DB;
+  
+  height: 800px;
+  width: 100%;
+  margin-left:-42px; 
+  margin-top:-10px;
+  
+  padding-top:30px;
+  padding-left:50px;
+  
+  
+  text-align:left;
+  font-family:Boogaloo;
+  font-size: 40px;  
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+.intro2{
+  font-family:Indie Flower;
+             font-size: 20px;
+             color:#8B0000;     
+             margin-top:-15px;
+}
+
+.intro2 a{
+  color:black;
+  background-color:  #F3E1DB;
+}
+
+.intro2 a:hover {
+  color:red;
+}
+
+.txt a{
+  color:#ee9780;
+  background-color:	#2f1c16;
+  text-decoration: none;  
+  font-size: 15px;
+  line-height: 15px; 
+  padding-left:20px;
+}
+.txt a:hover{
+  background-color: grey;
+}
+
+
+.images img{
+  width: 500px;height: 260px;
+  margin:10px auto;
+	background-color: #F5F5DC;
+  border-radius: 15px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+.style1{
+  color:black;
+  font-size:15px;
+}
+
+.style1 a{
+  margin:5px;
+  color:#fee4e6;
+  background-color:	#b1555b;
+  text-decoration: none;  
+  font-size: 15px;
+  line-height: 15px; 
+  padding-left:20px;
+  
+}
+
+.style1 a:hover{
+  background-color:grey;
+}
+
+.submenu3{
+  text-align:right;
+  font-family:Boogaloo;
+  font-size: 40px; 
+  
+  background-color:#dbd2c7;  
+  
+  height: 440px;
+  width: 100%;
+  margin-left:-42px; 
+  margin-top:-10px;
+  
+  
+  padding-top:20px;
+  padding-left:50px;
+ 
+}
+
+.intro3{
+  font-family:Indie Flower;
+             
+             background-color: #faf6f1;
+             width: 1050px;
+             height: 300px;
+             margin-top:20px;          
+             margin-left:100px; 
+             border-radius: 5px; 
+  
+             font-size: 20px;
+             color:#8B0000;
+             
+             text-align:left;
+             padding-left:20px;
+             padding-right:20px;
+             padding-top:30px;                }
+
+.intro3 img{
+  margin-top:-10px;
+  
+  width:200px;
+  height:140px;
+  
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+
+
+.submenu4{
+  color:#fff3f5;
+  background-color: #7a756f;
+  
+  height: 300px;
+  width: 100%;
+  margin-left:-42px; 
+  margin-top:-10px;
+  
+  padding-top:20px;
+  padding-left:50px;
+ 
+  text-align:left;
+  font-family:Boogaloo;
+  font-size: 40px;  
+ 
+  vertical-align: middle;
+  line-height: 40px;}
+
+.intro4 {
+  font-family:Indie Flower;
+             font-size: 20px;
+             color:black;
+  
+             margin-left: 20px;
+             margin-right: 20px; 
+             margin-top:20px;
+             border-radius: 5px;
+             
+             background-color: #faf6f1;
+  width:  1000px;
+  height: 150px;}
+
+  
+.intro4 li{
+  text-align:left;
+  padding-left:20px;
+}
+
+.intro4 a{ 
+             
+             color:#413112;
+             background-color: #faf6f1; 
+}
+
+

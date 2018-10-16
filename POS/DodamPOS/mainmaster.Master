@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mainmaster.Master.cs" Inherits="DodamPOS.posmaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Welcome to Dodam POS System >_<</title>
+	<link href="css/maincss.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="overflow-x: hidden;">
+    <form id="form1" runat="server">
+        <div class="mainwall">
+
+		 <!--navigaion menu bar -->
+		 <ul class="navigation">
+
+			 <li class="nav-item"><asp:LinkButton ID="linkhome" runat="server" PostBackUrl="~/000home.aspx"
+				style="border-top-right-radius:10px; border-top-left-radius:10px; margin-top: 30px;">Home(HL)</asp:LinkButton ></li>
+			
+			<li class="nav-item"><asp:LinkButton ID="linkpos" runat="server" PostBackUrl="~/010pos.aspx">POS(HL)</asp:LinkButton></li>
+			
+			<li class="nav-item"><asp:LinkButton ID="linkitem" runat="server" PostBackUrl="~/020item.aspx">Item(HL)</asp:LinkButton></li>
+			
+			<li class="nav-item"><asp:LinkButton ID="linkcustomer" runat="server" PostBackUrl="~/030customer.aspx" >Customer(HL)</asp:LinkButton></li>
+
+			<li class="nav-item"><asp:LinkButton ID="linkreport" runat="server" PostBackUrl="~/040report.aspx" >Report(HL)</asp:LinkButton></li>
+			
+			<li class="nav-item"><asp:LinkButton ID="linkaboutme" runat="server" PostBackUrl="~/050aboutme.aspx" 
+				style="border-bottom-right-radius:10px; border-bottom-left-radius:10px;" >About Me(HL)</asp:LinkButton></li>
+
+	        <!--
+			<li class="nav-item"><a href="010home.aspx" id="nav-item-top">Home</a></li>		
+	        <li class="nav-item"><a href="010pos.aspx">POS</a></li>
+	        <li class="nav-item"><a href="020item.aspx">Item</a></li>
+	        <li class="nav-item"><a href="030customer.aspx">Customer</a></li>
+	        <li class="nav-item"><a href="040report.aspx">Report</a></li>
+			<li class="nav-item"><a href="050aboutme.aspx" id="nav-item-bottom">About Me</a></li>
+			 -->
+
+         </ul>
+         <!--navigaion menu bar -->
+
+
+
+		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger"></label>
+
+			<div class="site-wrap">
+	
+ 
+
+               <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+               </asp:ContentPlaceHolder>
+			</div>
+        </div>
+    </form>
+</body>
+</html>

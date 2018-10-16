@@ -1,0 +1,80 @@
+<link href="https://fonts.googleapis.com/css?family=Amaranth|Heebo|Hind+Guntur|News+Cycle" rel="stylesheet">
+<link href="survey.css" rel="stylesheet">
+<body>
+<h1 id="title"> K-Pop Survey Form </h1>
+
+  <div id="main">
+ 
+    
+<p id="description">K-POP is the short form of Korean popular music. Originated in the early 1990s, K-POP is now a generic term refers to all genres of "popular music" within South Korea such as rapping, dance-pop, pop ballad, electronic, rock, hip-hop, R&B etc. For instance, “Gangnam Style” from PSY and “Nobody” from Wonder Girls are two of the most well known K-pop songs around the world.
+<br><br>
+Here are 15 questions about K-pop music for you, you may choose one or more answers from the choices offered, and also open questions to write down, please read the questions carefully and tick your choices. 
+Thank you so much for your time and patience, hope you find them interesting. </p>
+<br> 
+    
+<form id="survey-form">
+  
+  <label class="subTitle" >
+    &nbsp;&nbsp;About Yourself &nbsp;&nbsp;  </label> <hr>
+  
+<label class="Qs1" id="name-label">
+Name : </label>   
+ 
+<div class="inputBox">
+<input type="text" id="name" class="answer" placeholder="Please enter your name" required>
+</div><br>
+        
+<label class="Qs1" id="email-label">
+Email : </label>
+  
+<div class="inputBox"> 
+<input type="email" id="email" class="answer" placeholder="Please enter your email" required>
+</div><br>
+  
+<label class="Qs1" id="number-label">
+Age : </label>
+  
+<div class="inputBox"> 
+<input type="number" id="number" class="answer" min="1" max="100" step="1" placeholder="Please enter your age"required>
+</div><br>
+  <br>
+   <label class="subTitle">
+     &nbsp;&nbsp;About your kpop favoirite&nbsp;&nbsp;   </label><hr>
+  
+ <br>
+<div class="Qs2"> Where did you get to know the K-POP singers？ </div>
+      &nbsp;&nbsp;
+      <select class="answer" id="dropdown">
+      <option disabled selected value>Select an option</option>
+      <option value="TV Show">TV Show</option>
+      <option value="Youtube">Youtube</option>
+      <option value="Advertisement">Advertisement</option>
+      <option value="Facebook">Facebook</option>
+    </select>
+  <br><br>
+ 
+<div class="Qs2"> Does K-POP rank high compared with other foreign languages on the music chart of your country? </div>
+<ul style="list-style: none;">
+<li class="select"><input name="radio-buttons" value="1"  type="radio" class="rank"><label> Yes, always</label></li>
+   <li class="select"><input name="radio-buttons" value="2"  type="radio" class="rank"><label> Yes, sometimes</label></li>
+   <li class="select"><input name="radio-buttons" value="3"  type="radio" class="rank"><label> No, not at all</label></li>
+   <li class="select"><input name="radio-buttons" value="3"  type="radio" class="rank"><label> I don't know </label></li>  
+</ul>
+  
+<div class="Qs2"> Are you following the official accounts of K-POP singers and company’s SNS? If so, please check. </div>
+<ul id="SNS" style="list-style: none;">
+<li class="select"><label><input name="sns" value="1" type="checkbox" class="rank"> FaceBook</label></li>
+<li class="select"><input name="sns" value="2" type="checkbox" class="rank"> Instagram</li>
+<li class="select"><label><input name="sns" value="3" type="checkbox" class="rank"> Twitter</label></li>
+<li class="select"><label><input name="sns" value="4" type="checkbox" class="rank"> Weibo</label></li>
+<li class="select"><label><input name="sns" value="5" type="checkbox" class="rank"> Google+</label></li>
+</ul>
+ 
+<label class="Qs2"> Please tell us your favorite K-Pop star and reason that you like them.</label> <br>  &nbsp;&nbsp; 
+<textarea id="favorite" class="answer" name="comment" placeholder="Please enter your favorite's here..."></textarea>
+<br>
+<button id="submit" type="submit">Submit</button>
+
+</form>
+  </div>
+</body>

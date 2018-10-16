@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="COMP229.master.cs" Inherits="COMP229.COMP229" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<title>Dodam Shin ASP.NET Practice</title>
+<link href="css/comp229.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dosis|Love+Ya+Like+A+Sister|Varela+Round|Julius+Sans+One" rel="stylesheet">
+</head>
+
+<body>
+
+<form id="form1" runat="server">
+
+<div id="header">
+COMP229  - ASP.NET Web Application Development Review Page
+</div>
+
+<div id="menutree">
+	Dodam Shin ★
+</div>
+
+<br />
+
+
+<div id="contents">
+<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+</asp:ContentPlaceHolder>
+</div>
+
+</form>
+</body>
+</html>
