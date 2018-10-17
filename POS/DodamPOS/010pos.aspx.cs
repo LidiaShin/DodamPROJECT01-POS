@@ -25,7 +25,16 @@ namespace DodamPOS
                 Session["cartprice"] = new List<string>();
                 Session["cartqty"] = new List<string>();
                 Session["cartname"] = new List<string>();
-               
+
+                Session["iTable"] = new DataTable();
+
+                iTable.Columns.Add("No", typeof(string));
+                iTable.Columns.Add("name", typeof(string));
+                iTable.Columns.Add("price", typeof(double));
+                iTable.Columns.Add("qty", typeof(double));
+
+                iTable.Columns.Add("subtotal", typeof(double));
+
             }
 
             else if (!IsPostBack && Session["itemCat"] == null)
@@ -38,7 +47,14 @@ namespace DodamPOS
                 Session["cartprice"] = new List<string>();
                 Session["cartqty"] = new List<string>();
                 Session["cartname"] = new List<string>();
-                
+
+                Session["iTable"] = new DataTable();
+
+                iTable.Columns.Add("No", typeof(string));
+                iTable.Columns.Add("name", typeof(string));
+                iTable.Columns.Add("price", typeof(string));
+                iTable.Columns.Add("qty", typeof(string));
+                iTable.Columns.Add("subtotal", typeof(double));
             }
            
         }
@@ -127,18 +143,13 @@ namespace DodamPOS
         {
             ArrayList values = new ArrayList();
 
-            for (int i = 0; i < inCount; i++)
+            for (int i = -1; i < inCount; i++)
             {
                 values.Add("" + (i+1)); // increment i and add.
             }
 
             return values;
         }
-
-
-
-
-
 
 
         protected void SelectCat(object sender, EventArgs e)
@@ -148,49 +159,49 @@ namespace DodamPOS
                     CatSelect.Text = myCat;
                     Session["itemCat"] = CatSelect.Text;
                     CurrentPageIndex = 0;
-                    ItemViewByCat(myCat);                   
+                    ItemViewByCat(myCat); 
+            
                  }
 
 
-        List<string> cart {
-            get
-            {return (List<string>)Session["cart"];}
+        //List<string> cart {
+        //    get
+        //    {return (List<string>)Session["cart"];}
             
-            set
-            {Session["cart"] = value;}
-        }
+        //    set
+        //    {Session["cart"] = value;}
+        //}
 
 
-        List<string> cartprice
-        {
-            get
-            { return (List<string>)Session["cartprice"]; }
+        //List<string> cartprice
+        //{
+        //    get
+        //    { return (List<string>)Session["cartprice"]; }
 
-            set
-            { Session["cartprice"] = value; }
-        }
+        //    set
+        //    { Session["cartprice"] = value; }
+        //}
 
-        List<string> cartqty
-        {
-            get
-            { return (List<string>)Session["cartqty"]; }
+        //List<string> cartqty
+        //{
+        //    get
+        //    { return (List<string>)Session["cartqty"]; }
 
-            set
-            { Session["cartqty"] = value; }
-        }
+        //    set
+        //    { Session["cartqty"] = value; }
+        //}
 
-        List<string> cartname
-        {
-            get
-            { return (List<string>)Session["cartname"]; }
+        //List<string> cartname
+        //{
+        //    get
+        //    { return (List<string>)Session["cartname"]; }
 
-            set
-            { Session["cartname"] = value; }
-        }
-
-
+        //    set
+        //    { Session["cartname"] = value; }
+        //}
 
 
+        
         public double subtotal
         {
             get
@@ -198,7 +209,7 @@ namespace DodamPOS
                 if (Session["sub"] == null)
                     return 0;
                 else
-                    return Convert.ToDouble(Session["sub"]) * Convert.ToDouble(Session["ii"]);
+                    return Convert.ToDouble(Session["sub"]);
             }
             set
             {
@@ -206,7 +217,32 @@ namespace DodamPOS
             }
         }
 
+        protected void RowDelete(object sender, GridViewDeleteEventArgs e)
+        {
+            DataTable jTable = (DataTable)Session["iTable"];
 
+            jTable.Rows[e.RowIndex].Delete();
+            GridView1.DataSource = jTable;
+            GridView1.DataBind();
+
+            object Sum = jTable.Compute(" SUM(subtotal) ", "");
+            double NetTotal = Double.Parse(Sum.ToString());
+            subTotal.Text = NetTotal.ToString();
+
+
+        }
+
+        protected void RowCreate(object sender, GridViewRowEventArgs e)
+        {
+
+            e.Row.Cells[0].Width = 100;
+            e.Row.Cells[1].Width = 50;
+            e.Row.Cells[2].Width = 160;
+            e.Row.Cells[3].Width = 100;
+            e.Row.Cells[4].Width = 50;
+            e.Row.Cells[5].Width = 120;
+
+        }
 
         public string iCategory { get; set; }
         public string iName { get; set; }
@@ -217,7 +253,17 @@ namespace DodamPOS
         public string iQuantity { get; set; }
         public string iRday { get; set; }
 
-        protected void SelectItem(object sender, EventArgs e)
+        DataTable iTable
+        {
+            get
+            { return (DataTable)Session["iTable"]; }
+
+            set
+            { Session["iTable"] = value; }
+        }
+
+    
+            protected void SelectItem(object sender, EventArgs e)
         {
 
             if (Session["ii"] == null)
@@ -235,28 +281,18 @@ namespace DodamPOS
                 ConnectionClass.GetItemDetail(theitem);
 
 
-                cart.Add(itemNo);
-                cartItemNo.Text = string.Join("<br>", cart.ToArray());
+                iTable.Rows.Add(itemNo,theitem.itemName, theitem.itemRPrice, Convert.ToString(Session["ii"]),
+                    Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]));
 
-                cartprice.Add(theitem.itemRPrice+theitem.itemName+ Convert.ToString(Session["ii"]));
-                cartItemPrice.Text = string.Join("<br>", cartprice.ToArray());
+                GridView1.DataSource = iTable;     
+                GridView1.DataBind();
 
+                object Sum = iTable.Compute(" SUM(subtotal) ", "");
+                double NetTotal = Double.Parse(Sum.ToString());
 
-                //cartname.Add(theitem.itemName);
-                //cartItemName.Text = string.Join("<br>", cartname.ToArray());
-
-                //cartqty.Add(Convert.ToString(Session["ii"]));
-                //cartItemQty.Text = string.Join("<br>", cartqty.ToArray());
-
-
-                subtotal = subtotal + Convert.ToDouble(theitem.itemRPrice);
-                subTotal.Text = subtotal.ToString();
-
-
+                subTotal.Text = NetTotal.ToString();
                 Session["ii"] = null;
             }
-
-
         }
 
 
@@ -277,21 +313,9 @@ namespace DodamPOS
         }
 
         protected void test(object sender, EventArgs e)
-        {
-            //Session["subtotal"] = 0;
+        {           
             subtotal = 0;
             subTotal.Text = "0";
-
-            
-            cartItemNo.Text = "";
-            cartItemName.Text = "";
-            cartItemPrice.Text = "";
-            cartItemQty.Text = "";
-            cart.Clear();
-            cartprice.Clear();
-            cartqty.Clear();
-            cartname.Clear();
-
         }
 
        

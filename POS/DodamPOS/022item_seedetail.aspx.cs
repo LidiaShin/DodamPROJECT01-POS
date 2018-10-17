@@ -81,13 +81,14 @@ namespace DodamPOS
             btnUpload.Visible = true;
 
             // Input qty list numbers
+            qtyList.SelectedItem.Text = "Please Select";
             for (int i = 1; i <= 100; i++)
             {
                 qtyList.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
 
            // Input category list items
-            //CategoryList.SelectedItem.Text = "Please Select";
+            CategoryList.SelectedItem.Text = "Please Select";
             CsItemCat Itemcats = new CsItemCat(CategoryTable);
             ConnectionClass.GetItemCat(Itemcats);
 

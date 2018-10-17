@@ -1,5 +1,5 @@
 ﻿ALTER TABLE tblItem
-	ALTER COLUMN itemImage nvarchar(100);
+	ALTER COLUMN itemNote nvarchar(400);
 
 
 ALTER TABLE tblItem

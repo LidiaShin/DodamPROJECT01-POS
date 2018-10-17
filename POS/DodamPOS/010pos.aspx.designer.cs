@@ -31,13 +31,13 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Button CatAll;
         
         /// <summary>
-        /// CatCloth control.
+        /// CatGarment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CatCloth;
+        protected global::System.Web.UI.WebControls.Button CatGarment;
         
         /// <summary>
         /// CatMagic control.
@@ -58,22 +58,22 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Button CatWeapon;
         
         /// <summary>
-        /// CatBook control.
+        /// CatFood control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CatBook;
+        protected global::System.Web.UI.WebControls.Button CatFood;
         
         /// <summary>
-        /// CatPotion control.
+        /// CatArmor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CatPotion;
+        protected global::System.Web.UI.WebControls.Button CatArmor;
         
         /// <summary>
         /// CatSelect control.
@@ -146,6 +146,15 @@ namespace DodamPOS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label cartItemQty;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
         /// subTotal control.
