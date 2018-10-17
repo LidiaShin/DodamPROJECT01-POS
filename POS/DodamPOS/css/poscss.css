@@ -490,3 +490,23 @@ label[for="nav-trigger"] {
 	transition-duration: 0.25s;
 	font-weight: 200;
 }
+
+/*POS Page*/
+
+.CatBtn {
+	outline: 0;
+	background-color:antiquewhite;
+	border: 0;
+	padding: 5px 5px;
+	color: #282b32;
+	border-radius: 2px;
+	width: 60px;
+	cursor: pointer;
+	font-size: 12px;
+	transition-duration: 0.25s;
+}
+
+	.CatBtn:hover {
+		background-color:cadetblue;
+		color:white;
+	}

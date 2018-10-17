@@ -54,3 +54,22 @@ UPDATE tblItem SET itemCategory=(N'{0}'),itemName=(N'{1}'),
 
 SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
 itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE' from tblItem WHERE lOWER(itemName) LIKE LOWER(N'%D%')order by itemID;
+
+
+SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE' from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%테%')order by itemID;
+
+SELECT * FROM tblITEM 
+WHERE itemCategory='MAGIC';
+
+SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+           itemQty AS Quantity,itemImage AS URL from tblItem order by itemID
+
+SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+           itemQty AS Quantity,itemImage AS URL from tblItem  WHERE itemCategory='MAGIC' order by itemID;
+
+SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+           itemQty AS Quantity,itemImage AS URL from tblItem order by itemID;

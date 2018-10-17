@@ -422,7 +422,55 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
         }
 
 
+        // POS Page
 
+        public static void GetItemAll(CsItemlist itable)
+        {
+            string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+           itemQty AS Quantity,itemImage AS URL from tblItem order by itemID;");
+
+            cmdString = new SqlCommand(kQuery, cntString);
+
+            try
+            {
+                cntString.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmdString);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                itable.itemList = ds.Tables[0];
+            }
+
+            finally
+            {
+                cntString.Close();
+            }
+        }
+
+        public static void GetItemByCat(CsFilteredItemList fitem)
+        {
+            string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+           itemQty AS Quantity,itemImage AS URL from tblItem WHERE itemCategory=('{0}') order by itemID;",fitem.keyiName);
+
+            cmdString = new SqlCommand(kQuery, cntString);
+
+            try
+            {
+                cntString.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmdString);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                fitem.fiTable= ds.Tables[0];
+            }
+
+            finally
+            {
+                cntString.Close();
+            }
+        }
 
 
 
