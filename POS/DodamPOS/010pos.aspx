@@ -62,7 +62,7 @@
 
   <tr style="font-size:14px; text-align:center;" onmouseover="this.style.backgroundColor='rgba(184,191,209, 0.6)'" onmouseout="this.style.backgroundColor=''">
     <td><asp:Label ID="cartItemNo" runat="server" Text=""></asp:Label></td>
-	<td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
+	<td><asp:Label ID="cartItemName" runat="server" Text=""></asp:Label></td>
 	<td><asp:Label ID="cartItemPrice" runat="server" Text=""></asp:Label></td>
 	<td><asp:Label ID="cartItemQty" runat="server" Text=""> </asp:Label> </td>
   </tr>

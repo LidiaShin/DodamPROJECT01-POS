@@ -24,11 +24,8 @@ namespace DodamPOS
                 Session["cart"] = new List<string>();
                 Session["cartprice"] = new List<string>();
                 Session["cartqty"] = new List<string>();
-                //List<string> cartqty = new List<string>();
-              
-
-
-
+                Session["cartname"] = new List<string>();
+               
             }
 
             else if (!IsPostBack && Session["itemCat"] == null)
@@ -40,7 +37,8 @@ namespace DodamPOS
                 Session["cart"] = new List<string>();
                 Session["cartprice"] = new List<string>();
                 Session["cartqty"] = new List<string>();
-                //List<string> cartqty = new List<string>();
+                Session["cartname"] = new List<string>();
+                
             }
            
         }
@@ -131,7 +129,7 @@ namespace DodamPOS
 
             for (int i = 0; i < inCount; i++)
             {
-                values.Add("" + (i + 1)); // increment i and add.
+                values.Add("" + (i+1)); // increment i and add.
             }
 
             return values;
@@ -181,6 +179,14 @@ namespace DodamPOS
             { Session["cartqty"] = value; }
         }
 
+        List<string> cartname
+        {
+            get
+            { return (List<string>)Session["cartname"]; }
+
+            set
+            { Session["cartname"] = value; }
+        }
 
 
 
@@ -192,7 +198,7 @@ namespace DodamPOS
                 if (Session["sub"] == null)
                     return 0;
                 else
-                    return Convert.ToDouble(Session["sub"]);
+                    return Convert.ToDouble(Session["sub"]) * Convert.ToDouble(Session["ii"]);
             }
             set
             {
@@ -213,38 +219,43 @@ namespace DodamPOS
 
         protected void SelectItem(object sender, EventArgs e)
         {
-            
-            
-            ImageButton ibtn = (ImageButton)(sender);
-            string itemNo = Convert.ToString(ibtn.CommandArgument);
 
-            CsItem theitem = new CsItem(itemNo, iCategory, iName, iPPrice, iRPrice, iNote, iImage, iQuantity, iRday);
+            if (Session["ii"] == null)
+            {
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please  ');</script>");
+            }
 
-            ConnectionClass.GetItemDetail(theitem);
+            else
+            {
+                ImageButton ibtn = (ImageButton)(sender);
+                string itemNo = Convert.ToString(ibtn.CommandArgument);
 
-            //cart.Add(itemNo+ " " + theitem.itemName + "  " + theitem.itemRPrice);
-            cart.Add(itemNo);
-            cartItemNo.Text = string.Join("<br>", cart.ToArray());
+                CsItem theitem = new CsItem(itemNo, iCategory, iName, iPPrice, iRPrice, iNote, iImage, iQuantity, iRday);
 
-
-            cartprice.Add(theitem.itemRPrice);          
-            cartItemPrice.Text = string.Join("<br>", cartprice.ToArray());
+                ConnectionClass.GetItemDetail(theitem);
 
 
-           
+                cart.Add(itemNo);
+                cartItemNo.Text = string.Join("<br>", cart.ToArray());
+
+                cartprice.Add(theitem.itemRPrice+theitem.itemName+ Convert.ToString(Session["ii"]));
+                cartItemPrice.Text = string.Join("<br>", cartprice.ToArray());
 
 
-            subtotal = subtotal + Convert.ToDouble(theitem.itemRPrice);
-            subTotal.Text = subtotal.ToString();
+                //cartname.Add(theitem.itemName);
+                //cartItemName.Text = string.Join("<br>", cartname.ToArray());
+
+                //cartqty.Add(Convert.ToString(Session["ii"]));
+                //cartItemQty.Text = string.Join("<br>", cartqty.ToArray());
 
 
-            //Label iqty = itemLists.Items[1].FindControl("QtySelect") as Label;
+                subtotal = subtotal + Convert.ToDouble(theitem.itemRPrice);
+                subTotal.Text = subtotal.ToString();
 
-            //string qtys = Convert.ToString(Session["ii"]);
 
-            cartqty.Add(Convert.ToString(Session["ii"]));
-            cartItemQty.Text = string.Join("<br>", cartqty.ToArray());
-            //string.Join("<br>", cartqty.ToArray()); 
+                Session["ii"] = null;
+            }
+
 
         }
 
@@ -271,8 +282,15 @@ namespace DodamPOS
             subtotal = 0;
             subTotal.Text = "0";
 
-            cart.Clear();
+            
             cartItemNo.Text = "";
+            cartItemName.Text = "";
+            cartItemPrice.Text = "";
+            cartItemQty.Text = "";
+            cart.Clear();
+            cartprice.Clear();
+            cartqty.Clear();
+            cartname.Clear();
 
         }
 
