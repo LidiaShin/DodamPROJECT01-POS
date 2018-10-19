@@ -8,8 +8,9 @@
 
 	
 <div style="width:95%;  display: flex; flex-wrap: wrap;">
-
-<div style="width:35%; border: 1px solid red; height:350px;" >
+	
+<div style="width:35%;  height:350px;" >
+	<br />
 <div>	
 <asp:Button ID="CatAll" runat="server" ClientIDMode="Static" Text="All" CommandArgument="All" OnClick="SelectCat" CssClass="CatBtn" />
 <asp:Button ID="CatGarment" runat="server" ClientIDMode="Static" Text="Garment" CommandArgument="GARMENT" OnClick="SelectCat" CssClass="CatBtn" />
@@ -19,18 +20,18 @@
 <asp:Button ID="CatArmor" runat="server" ClientIDMode="Static" Text="Armor" CommandArgument="ARMOR" OnClick="SelectCat" CssClass="CatBtn"  />
 <asp:Label ID="CatSelect" runat="server" Text="All" Visible="false"  ></asp:Label>
 </div>
-<br />
+	
 
 <asp:DataList ID="itemLists"  RepeatDirection="Horizontal" RepeatColumns="4" runat="server" >
 
   <ItemTemplate>
      <asp:Label ID="itemName" runat="server" Text='<%# Eval("Name") %>' Width="100px" Style="font-size:11px" /><br />	  
-	 <asp:ImageButton ID="itemImage" runat="server" ImageUrl='<%# Eval("URL") %>' CommandArgument='<%# Eval("NO") %>' OnClick="SelectItem" Width="50px" Height="50px"  /><br />
-	 <asp:Label ID="itemNo" runat="server" Text='<%# Eval("RetailPrice") %>' Style="font-size:14px"  /> <br />
+	 <asp:ImageButton ID="itemImage" runat="server" ImageUrl='<%# Eval("URL") %>' CommandArgument='<%# Eval("NO") %>' OnClick="SelectItem" Width="50px" Height="50px"  /> <br />
+	 <asp:Label ID="itemNo" runat="server" Text='<%# Eval("RetailPrice") %>' Style="font-size:13px; font-weight:600;"  /> 
 	 
-	 <asp:Label ID="QtySelect" runat="server" Text=""></asp:Label><br />
-
-	 <asp:DropDownList ID="itemQtydll" runat="server" DataSource='<%# Stock((int)Eval("Quantity")) %>'  OnSelectedIndexChanged="SelectCartQty"  AutoPostBack="True">
+	 <asp:Label ID="QtySelect" runat="server" Text="" style="font-size:8px;"  ></asp:Label><br />
+	  <asp:Label ID="Label1" runat="server" Text='<%# Eval("Quantity") %>' ForeColor="#33CC33" Visible="false"></asp:Label>
+	 <asp:DropDownList ID="itemQtydll" runat="server" DataSource='<%# Stock((int)Eval("Quantity")) %>'  OnSelectedIndexChanged="SelectCartQty"  AutoPostBack="True" CssClass="ProvinceInput">
 		
 		 
 	 </asp:DropDownList>
@@ -46,7 +47,7 @@
     </table>  
 	</div>
 
-<div style="width:50%; border: 1px solid red; margin-left:20px; overflow:auto; height:350px;"> 
+<div style="width:50%;  margin-left:20px; overflow:auto; height:350px;"> 
 
 <div style="display: block;  border: 1px solid white; overflow:auto; width:95%; height:300px;">
 
@@ -75,11 +76,11 @@
   </tr>
 	
 </table> -->
-	<asp:GridView ID="GridView1"  runat ="server" OnRowDeleting="RowDelete" OnRowCreated = "RowCreate"   >
+	<asp:GridView ID="GridView1"  runat ="server" OnRowDeleting="RowDelete" OnRowCreated = "RowCreate"   HeaderStyle-CssClass="ListHeader">
 
 
 		<Columns>
-			<asp:CommandField ShowDeleteButton="True" DeleteText="Cancel" ButtonType="Button" ItemStyle-ForeColor="#CCCCFF" ControlStyle-CssClass="SearchBtn"></asp:CommandField>
+			<asp:CommandField ShowDeleteButton="True" DeleteText="Cancel" ButtonType="Button" ItemStyle-ForeColor="#CCCCFF" ControlStyle-CssClass="CatBtn" ></asp:CommandField>
 		</Columns>
 	</asp:GridView>
 
@@ -89,9 +90,11 @@
 
 	<br />
 	<div style="display: block; width:95%; border: 1px solid white;">
-	<asp:Label ID="subTotal" runat="server" Text="SubTotal" Font-Size="Large" ForeColor="White" BackColor="Fuchsia"></asp:Label>
+	<asp:Label ID="Display" runat="server" Text="Grand Total" ForeColor="White" Font-Size="Large" Font-Italic="True"></asp:Label> &nbsp; &nbsp; &nbsp; <asp:Label ID="subTotal" runat="server" Text="&nbsp;&nbsp;" Font-Size="Large" ForeColor="White" BackColor="Fuchsia" Width="120px"></asp:Label>
 	
 	<asp:Button ID="Button1" runat="server" Text="CLEAR"  OnClick="test"/>
+
+		<asp:Label ID="testfield" runat="server" Text=""></asp:Label>
 	</div>
 </div>
 	<br />

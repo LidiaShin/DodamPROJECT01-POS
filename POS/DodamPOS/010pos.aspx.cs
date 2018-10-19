@@ -20,20 +20,20 @@ namespace DodamPOS
                 ItemViewByCat(Session["itemCat"].ToString());
 
    
-                Session["sub"] = new double();
-                Session["cart"] = new List<string>();
-                Session["cartprice"] = new List<string>();
-                Session["cartqty"] = new List<string>();
-                Session["cartname"] = new List<string>();
-
+         
                 Session["iTable"] = new DataTable();
 
                 iTable.Columns.Add("No", typeof(string));
                 iTable.Columns.Add("name", typeof(string));
+
                 iTable.Columns.Add("price", typeof(double));
                 iTable.Columns.Add("qty", typeof(double));
-
                 iTable.Columns.Add("subtotal", typeof(double));
+
+                iTable.Columns.Add("test", typeof(string));
+
+
+
 
             }
 
@@ -42,25 +42,23 @@ namespace DodamPOS
                 CurrentPageIndex = 0;
                 ItemViewByCat("All");
 
-                Session["sub"] = new double();
-                Session["cart"] = new List<string>();
-                Session["cartprice"] = new List<string>();
-                Session["cartqty"] = new List<string>();
-                Session["cartname"] = new List<string>();
-
                 Session["iTable"] = new DataTable();
 
-                iTable.Columns.Add("No", typeof(string));
-                iTable.Columns.Add("name", typeof(string));
-                iTable.Columns.Add("price", typeof(string));
-                iTable.Columns.Add("qty", typeof(string));
-                iTable.Columns.Add("subtotal", typeof(double));
+                iTable.Columns.Add("No", typeof(string)); //Cell [0]
+                iTable.Columns.Add("name", typeof(string)); // Cell[1]
+
+                iTable.Columns.Add("price", typeof(double)); // Cell[2]
+                iTable.Columns.Add("qty", typeof(double)); // Cell [3]
+                iTable.Columns.Add("subtotal", typeof(double)); //Cell[4]
+
+                iTable.Columns.Add("test", typeof(string)); // Cell [5]
+
+               
+
             }
-           
         }
         DataTable itemTable { get; set; }
-
-       
+      
         int pg = 0;
         public int CurrentPageIndex
         {
@@ -164,84 +162,40 @@ namespace DodamPOS
                  }
 
 
-        //List<string> cart {
-        //    get
-        //    {return (List<string>)Session["cart"];}
-            
-        //    set
-        //    {Session["cart"] = value;}
-        //}
-
-
-        //List<string> cartprice
-        //{
-        //    get
-        //    { return (List<string>)Session["cartprice"]; }
-
-        //    set
-        //    { Session["cartprice"] = value; }
-        //}
-
-        //List<string> cartqty
-        //{
-        //    get
-        //    { return (List<string>)Session["cartqty"]; }
-
-        //    set
-        //    { Session["cartqty"] = value; }
-        //}
-
-        //List<string> cartname
-        //{
-        //    get
-        //    { return (List<string>)Session["cartname"]; }
-
-        //    set
-        //    { Session["cartname"] = value; }
-        //}
-
-
-        
-        public double subtotal
-        {
-            get
-            {
-                if (Session["sub"] == null)
-                    return 0;
-                else
-                    return Convert.ToDouble(Session["sub"]);
-            }
-            set
-            {
-                Session["sub"] = value;
-            }
-        }
 
         protected void RowDelete(object sender, GridViewDeleteEventArgs e)
         {
             DataTable jTable = (DataTable)Session["iTable"];
 
+            //Double CancelItemQty = Double.Parse(jTable.Rows[e.RowIndex][3].ToString());
             jTable.Rows[e.RowIndex].Delete();
+            
             GridView1.DataSource = jTable;
             GridView1.DataBind();
 
-            object Sum = jTable.Compute(" SUM(subtotal) ", "");
-            double NetTotal = Double.Parse(Sum.ToString());
-            subTotal.Text = NetTotal.ToString();
+            
+            if (jTable.Rows.Count>0)
+            {
+                object Sum = jTable.Compute(" SUM(subtotal) ", "");
+                double NetTotal = Double.Parse(Sum.ToString());
+                subTotal.Text = NetTotal.ToString();
+            }
 
-
+            else
+            {
+                subTotal.Text = "0";
+            }
         }
 
         protected void RowCreate(object sender, GridViewRowEventArgs e)
         {
-
-            e.Row.Cells[0].Width = 100;
-            e.Row.Cells[1].Width = 50;
-            e.Row.Cells[2].Width = 160;
-            e.Row.Cells[3].Width = 100;
-            e.Row.Cells[4].Width = 50;
-            e.Row.Cells[5].Width = 120;
-
+            e.Row.Cells[0].Width = 100; // Cancel button Cell
+            e.Row.Cells[1].Width = 50; // item No Cell
+            e.Row.Cells[2].Width = 160; // item Name Cell
+            e.Row.Cells[3].Width = 100; // item Price Cell
+            e.Row.Cells[4].Width = 50;  // item Qty Cell
+            e.Row.Cells[5].Width = 120; // item SubTotal Cell
+            e.Row.Cells[6].Visible = false; // invoice Customer name Cell (invisible)
         }
 
         public string iCategory { get; set; }
@@ -262,13 +216,23 @@ namespace DodamPOS
             { Session["iTable"] = value; }
         }
 
-    
-            protected void SelectItem(object sender, EventArgs e)
+        DataTable jTable
+        {
+            get
+            { return (DataTable)Session["jTable"]; }
+
+            set
+            { Session["jTable"] = value; }
+        }
+
+        
+
+        protected void SelectItem(object sender, EventArgs e)
         {
 
             if (Session["ii"] == null)
             {
-                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please  ');</script>");
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please select quantity ');</script>");
             }
 
             else
@@ -281,11 +245,42 @@ namespace DodamPOS
                 ConnectionClass.GetItemDetail(theitem);
 
 
-                iTable.Rows.Add(itemNo,theitem.itemName, theitem.itemRPrice, Convert.ToString(Session["ii"]),
-                    Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]));
 
-                GridView1.DataSource = iTable;     
-                GridView1.DataBind();
+                //    Dictionary<string, double> dict = new Dictionary<string, double>();
+
+                //    dict.Add(itemNo, Convert.ToDouble(Session["ii"]));
+
+                //    List<KeyValuePair<string, double>> lst = dict.ToList();
+                bool found = false;
+
+                if (iTable.Rows.Count > 0) //두번째 담을때부터...
+                {
+                    foreach (DataRow iRow in iTable.Rows)
+                    {
+                        if (Convert.ToString(iRow["No"]) == itemNo) // 카트에 이미 담겨진 아이템이라면 (=No 가 일치한다면)
+                        {
+                            double temp = Convert.ToDouble(iRow["qty"]);
+                            iRow["qty"] = Convert.ToDouble(Session["ii"]) + temp;
+                            
+                            iRow["subtotal"]= Convert.ToDouble(iRow["qty"]) * Convert.ToDouble(iRow["price"]);// 아이템 갯수 업데이트
+                            found = true;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        iTable.Rows.Add(itemNo, theitem.itemName, Convert.ToDouble(theitem.itemRPrice), Convert.ToDouble(Session["ii"]),
+                         Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]), "test");
+                    }                 
+                }
+                
+                else // 처음담을때 
+                {
+                iTable.Rows.Add(itemNo, theitem.itemName, Convert.ToDouble(theitem.itemRPrice), Convert.ToDouble(Session["ii"]),
+                            Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]), "test");
+                }
+                GridView1.DataSource = iTable;    //그리드뷰1에 데이터 넣어줌 
+                GridView1.DataBind(); 
 
                 object Sum = iTable.Compute(" SUM(subtotal) ", "");
                 double NetTotal = Double.Parse(Sum.ToString());
@@ -293,7 +288,10 @@ namespace DodamPOS
                 subTotal.Text = NetTotal.ToString();
                 Session["ii"] = null;
             }
+            
         }
+
+
 
 
 
@@ -313,9 +311,8 @@ namespace DodamPOS
         }
 
         protected void test(object sender, EventArgs e)
-        {           
-            subtotal = 0;
-            subTotal.Text = "0";
+        {
+            testfield.Text = "";
         }
 
        
