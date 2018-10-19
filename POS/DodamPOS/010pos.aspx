@@ -30,7 +30,7 @@
 	 <asp:Label ID="itemNo" runat="server" Text='<%# Eval("RetailPrice") %>' Style="font-size:13px; font-weight:600;"  /> 
 	 
 	 <asp:Label ID="QtySelect" runat="server" Text="" style="font-size:8px;"  ></asp:Label><br />
-	  <asp:Label ID="Label1" runat="server" Text='<%# Eval("Quantity") %>' ForeColor="#33CC33" Visible="false"></asp:Label>
+	  <asp:Label ID="Label1" runat="server" Text='<%# Eval("Quantity") %>' ForeColor="#33CC33" ></asp:Label>
 	 <asp:DropDownList ID="itemQtydll" runat="server" DataSource='<%# Stock((int)Eval("Quantity")) %>'  OnSelectedIndexChanged="SelectCartQty"  AutoPostBack="True" CssClass="ProvinceInput">
 		
 		 

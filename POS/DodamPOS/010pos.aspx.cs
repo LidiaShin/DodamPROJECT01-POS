@@ -260,10 +260,25 @@ namespace DodamPOS
                         if (Convert.ToString(iRow["No"]) == itemNo) // 카트에 이미 담겨진 아이템이라면 (=No 가 일치한다면)
                         {
                             double temp = Convert.ToDouble(iRow["qty"]);
-                            iRow["qty"] = Convert.ToDouble(Session["ii"]) + temp;
-                            
-                            iRow["subtotal"]= Convert.ToDouble(iRow["qty"]) * Convert.ToDouble(iRow["price"]);// 아이템 갯수 업데이트
+
+                            double uptemp = Convert.ToDouble(Session["ii"]) + temp;
+
+
+                            if (uptemp > Convert.ToDouble(theitem.itemQuantity))
+                            {
+                                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Too Many! ');</script>");
+                            }
+
+                            else
+                            {
+                                iRow["qty"] = Convert.ToDouble(Session["ii"]) + temp;
+
+                                iRow["subtotal"] = Convert.ToDouble(iRow["qty"]) * Convert.ToDouble(iRow["price"]);// 아이템 갯수 업데이트
+                               
+                            }
+
                             found = true;
+
                         }
                     }
 
