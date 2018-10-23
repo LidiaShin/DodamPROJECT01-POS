@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dodampos" Class="LINQforREPORTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=dodamdbserver.database.windows.net;Initial Catalog=dodampos;Persist Security Info=True;User ID=lidiadshin" SettingsObjectName="DodamPOS.Properties.Settings" SettingsPropertyName="dodamposConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblProvince" Member="tblProvinces">
+    <Type Name="tblProvince">
+      <Column Name="provinceName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="provinceCode" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

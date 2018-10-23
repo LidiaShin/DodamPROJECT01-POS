@@ -16,6 +16,19 @@ namespace DodamPOS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LINQforREPORTDataContext Sample = new LINQforREPORTDataContext();
+
+            var linkQuery = from tblProvince in Sample.tblProvinces
+                                   select tblProvince;
+            GridView1.DataSource = linkQuery;
+            GridView1.DataBind();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+           
+
 
         }
     }

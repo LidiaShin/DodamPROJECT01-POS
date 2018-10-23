@@ -11,7 +11,7 @@ namespace DodamPOS
     public partial class _003customer : System.Web.UI.Page
     {
 
-        DataTable CustomerTable { get; set; }
+        //DataTable CustomerTable { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -61,7 +61,7 @@ namespace DodamPOS
             }
         }
 
-     
+        DataTable CustomerTable { get; set; }
         string nameKeyword { get; set; }
         string emailKeyword { get; set; }
 

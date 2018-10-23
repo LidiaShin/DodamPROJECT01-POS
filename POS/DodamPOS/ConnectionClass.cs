@@ -546,7 +546,17 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
 
 
+        public static void UploadOrderItem(CsItem olditem)
+        {
+           
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(cntString);
 
+            DataTable DT = new DataTable();
+            bulkCopy.WriteToServer(DT);
+
+
+
+        }
 
 
 

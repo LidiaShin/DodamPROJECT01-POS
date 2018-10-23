@@ -85,11 +85,12 @@
 
 	</asp:ListView>
      </div> 
-           <!--검색창 -->
+           <!-- SEARCH FILTER DDL -->
 		   <asp:DropDownList ID="searchKeyWordList" runat="server" CssClass="SearchInput" AppendDataBoundItems="True" AutoPostBack="True" >
 		   <asp:ListItem Text="- Select  - " Selected="True" Value=""></asp:ListItem>
 		   </asp:DropDownList>
-
+	   
+	       <!--SEARCH TEXTBOX  -->
 		   <asp:TextBox ID="keywordbox" runat="server" CssClass="SearchInput" ></asp:TextBox>
 		    &nbsp; &nbsp;
 	        <!--검색버튼 -->

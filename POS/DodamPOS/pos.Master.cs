@@ -11,16 +11,7 @@ namespace DodamPOS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
-            }
-            /*if (!Page.IsPostBack) //means no postback..page loaded first time
-            {
-                //this loop will happen only when the page is loaded for first time..
-                //here u can put the code or function which you want only once to run 
-               
-            }*/
+            
         }
 
       
@@ -30,14 +21,17 @@ namespace DodamPOS
         }
         protected void linkpos_Click(object sender, EventArgs e)
         {
-            ChangeMenuColor(linkpos);
+            linkpos.Style.Add("color", "#fde5eb");
+            linkpos.Style.Add("font-weight", "700");
+            linkpos.Style.Add("background", "linear-gradient(180deg, rgba(77,133,102,0.6) 0%,rgba(77,80,133,0.8) 100%)");
+            
         }
 
    
         protected void linkitem_Click(object sender, EventArgs e)
         {
             ChangeMenuColor(linkitem);
-            ChangeMenuColor(linkitem);
+           
         }
 
         protected void linkcustomer_Click(object sender, EventArgs e)

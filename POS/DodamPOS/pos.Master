@@ -17,7 +17,13 @@
 			<li class="nav-item"><asp:LinkButton ID="linkhome" runat="server" OnClick="linkhome_Click" PostBackUrl="~/000home.aspx"
 				style="border-top-right-radius:10px; border-top-left-radius:10px; margin-top: 30px;">Home(HL)</asp:LinkButton ></li>
 			
-			<li class="nav-item"><asp:LinkButton ID="linkpos" runat="server" OnClick="linkpos_Click" PostBackUrl="~/010pos.aspx">POS(HL)</asp:LinkButton></li>
+			<li class="nav-item">
+				
+				
+
+			 <asp:LinkButton ID="linkpos" runat="server" Text="POS" OnClick="linkpos_Click" PostBackUrl="~/010pos.aspx" />
+
+			</li>
 			
 			<li class="nav-item"><asp:LinkButton ID="linkitem" runat="server" PostBackUrl="~/020item.aspx" OnClick="linkitem_Click">Item(HL)</asp:LinkButton></li>
 			

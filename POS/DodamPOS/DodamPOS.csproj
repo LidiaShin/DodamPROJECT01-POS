@@ -53,6 +53,7 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -78,6 +79,7 @@
   <ItemGroup>
     <Content Include="000home.aspx" />
     <Content Include="010pos.aspx" />
+    <Content Include="011pos_seeCustomerList.aspx" />
     <Content Include="020item.aspx" />
     <Content Include="021item_addnew.aspx" />
     <Content Include="022item_seedetail.aspx" />
@@ -116,6 +118,13 @@
     </Compile>
     <Compile Include="010pos.aspx.designer.cs">
       <DependentUpon>010pos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="011pos_seeCustomerList.aspx.cs">
+      <DependentUpon>011pos_seeCustomerList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="011pos_seeCustomerList.aspx.designer.cs">
+      <DependentUpon>011pos_seeCustomerList.aspx</DependentUpon>
     </Compile>
     <Compile Include="020item.aspx.cs">
       <DependentUpon>020item.aspx</DependentUpon>
@@ -191,6 +200,11 @@
     <Compile Include="CsProvincelist.cs" />
     <Compile Include="CsRegisterEmail.cs" />
     <Compile Include="CsUserlist.cs" />
+    <Compile Include="LINQforREPORT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LINQforREPORT.dbml</DependentUpon>
+    </Compile>
     <Compile Include="main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -220,6 +234,11 @@
       <DependentUpon>mainmaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="testpage992.aspx.cs">
       <DependentUpon>testpage992.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,10 +263,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\pos\pos.skin" />
+    <Content Include="LINQforREPORT.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>LINQforREPORT.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="LINQforREPORT.dbml.layout">
+      <DependentUpon>LINQforREPORT.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <Content Include="mainmaster.Master" />
     <Content Include="pos.Master" />
     <None Include="Properties\PublishProfiles\DodamPOS - Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -257,6 +288,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="itemimgs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

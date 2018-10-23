@@ -112,40 +112,49 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.LinkButton BtnNext;
         
         /// <summary>
-        /// cartItemNo control.
+        /// SearchBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cartItemNo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SearchBox;
         
         /// <summary>
-        /// cartItemName control.
+        /// BtnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cartItemName;
+        protected global::System.Web.UI.WebControls.Button BtnSearch;
         
         /// <summary>
-        /// cartItemPrice control.
+        /// BtnHdn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cartItemPrice;
+        protected global::System.Web.UI.WebControls.Button BtnHdn;
         
         /// <summary>
-        /// cartItemQty control.
+        /// IptHdn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cartItemQty;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText IptHdn;
+        
+        /// <summary>
+        /// lblCustomerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustomerName;
         
         /// <summary>
         /// GridView1 control.
@@ -157,13 +166,13 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// Display control.
+        /// lblNetTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Display;
+        protected global::System.Web.UI.WebControls.Label lblNetTotal;
         
         /// <summary>
         /// subTotal control.
@@ -175,21 +184,39 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Label subTotal;
         
         /// <summary>
-        /// Button1 control.
+        /// lblGrandTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label lblGrandTotal;
         
         /// <summary>
-        /// testfield control.
+        /// grandTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label testfield;
+        protected global::System.Web.UI.WebControls.Label grandTotal;
+        
+        /// <summary>
+        /// BtnCheckOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCheckOut;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
     }
 }

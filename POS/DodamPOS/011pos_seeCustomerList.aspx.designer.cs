@@ -10,7 +10,7 @@
 namespace DodamPOS {
     
     
-    public partial class WebForm2 {
+    public partial class _011pos_seeCustomerList {
         
         /// <summary>
         /// form1 control.
@@ -22,21 +22,21 @@ namespace DodamPOS {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// GridView1 control.
+        /// CustomerList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.DataList CustomerList;
         
         /// <summary>
-        /// Button1 control.
+        /// CustomerSelection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText CustomerSelection;
     }
 }
