@@ -6,23 +6,14 @@
 <head runat="server">
     <title></title>
 	<link href="css/poscss.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript">
-
-	  function SendName(){
-		  opener.document.getElementById("HdnCName").value = document.getElementById("CustomerSelection").value;
-		  opener.document.getElementById("HdnCNum").value = document.getElementById("CustomerNo").value;
-		  window.opener.document.getElementById("BtnHdn").click();
-		  window.close();
-	}
-
-</script>
-
-
+	<script src="js/posjs.js"></script>
 </head>
 	<body id="container_newwindow">
     <form id="form1" runat="server">
-		<h2>Select Customer</h2><hr /><br />
+
+
+
+<h2>Select Customer</h2><hr /><br />
 
     <table style="width:600px; border-collapse: collapse; border-spacing: 0; text-align:left; position:center; ">   
 	   <tr style="font-size:20px;" class="ListHeader">
@@ -37,7 +28,7 @@
 
 <ItemTemplate>
 
-	<table style="width:600px; border-spacing: 0;  position:center; ">
+<table style="width:600px; border-spacing: 0;  position:center; ">
 
 	<tr style="font-size:16px;" onmouseover="this.style.backgroundColor='rgba(184,191,209, 0.6)'" onmouseout="this.style.backgroundColor=''">		
     
@@ -50,7 +41,7 @@
     
 	<td  style="width:60px; text-align:left; "><asp:Label ID="lblCity" runat="server" Text='<%# Eval("CITY") %>' /></td>
 	</tr>
-	</table>
+</table>
 
 
 </ItemTemplate>

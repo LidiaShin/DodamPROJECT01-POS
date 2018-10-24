@@ -352,14 +352,27 @@ namespace DodamPOS
 
         protected void CheckOut(object sender, EventArgs e)
         {
-            if (subTotal.Text == "0")
+            if (subTotal.Text == "0" && lblCustomerNumber.Text == "-")
             {
-                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please Choose Item');</script>");
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please Choose Item and Customer');</script>");
             }
 
-            else
+
+            else if (lblCustomerNumber.Text == "-" && subTotal.Text != "0")
             {
-                // CUSTOMER NUMBER GET FROM SEARCH WINDOW
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please Select Customer (Use Search box above)');</script>");
+            }
+
+            else if (lblCustomerNumber.Text != "-" && subTotal.Text == "0")
+            {
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please Add Items to Cart');</script>");
+            }
+
+
+
+            else 
+            {
+                // CUSTOMER NUMBER  FROM SEARCH WINDOW
                 CustomerNum = lblCustomerNumber.Text;
 
                 try
@@ -380,10 +393,17 @@ namespace DodamPOS
                     //GridView1.DataSource = iTable;    
                     //GridView1.DataBind();
 
+
+
                     // UPLOAD ORDERITEM TABLE (ITABLE)
                     ConnectionClass.UploadOrderItem(iTable);
 
-                   
+
+
+                    // PASS SESSION VALUE (ORDER NUMBER)
+                    Session["ONUM"] = newOrder.OrderNumber;
+                    Session["CNAME"] = lblCustomerName.Text;
+
 
                     // EMPTY ITABLE
 
@@ -394,17 +414,22 @@ namespace DodamPOS
                     GridView1.DataSource = iTable;
                     GridView1.DataBind();
                     lblCustomerName.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-                    lblCustomerNumber.Text = "&nbsp;&nbsp;";
+                    lblCustomerNumber.Text = "-";
+
+                   
+
+
+
 
                     //SUCCESS MESSAGE 
-                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Thank you!');</script>");
+                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Order Completed!');</script>");
                     ClientScript.RegisterStartupScript(this.Page.GetType(), "","window.open('012pos_seeOrderReceipt.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
 
                 }
 
                 catch
                 {
-                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please Select Customer, ');</script>");
+                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Error Occured,Please try again later. ');</script>");
                 }
 
                 finally

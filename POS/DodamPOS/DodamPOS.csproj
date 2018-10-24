@@ -91,6 +91,7 @@
     <Content Include="050aboutme.aspx" />
     <Content Include="999testpage.aspx" />
     <Content Include="img\flowerwall.jpg" />
+    <Content Include="js\posjs.js" />
     <Content Include="main.aspx" />
     <Content Include="css\poscss.css" />
     <Content Include="css\maincss.css" />
@@ -295,9 +296,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="itemimgs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

@@ -4,8 +4,11 @@
 
 <html>
 <head runat="server">
+
     <title>Welcome to Dodam POS System >_<</title>
 	<link href="css/poscss.css" rel="stylesheet" type="text/css" />
+	
+
 </head>
 <body style="overflow-x: hidden;">
     <form id="form1" runat="server">

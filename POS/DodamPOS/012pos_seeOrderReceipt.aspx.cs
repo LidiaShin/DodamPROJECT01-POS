@@ -11,6 +11,23 @@ namespace DodamPOS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Session["ONUM"] = newOrder.OrderNumber; 
+
+            if (Session["ONUM"] != null && Session["CNAME"] != null && !IsPostBack)
+            {
+                lblONum.Text = Session["ONUM"].ToString();
+                lblCName.Text = Session["CNAME"].ToString();
+
+
+
+
+
+
+            }
+            else
+            {
+
+            }
 
         }
     }

@@ -26,6 +26,7 @@
 <br />
 	
 <!-- ITEM DISPLAY -->
+<div>
 <asp:DataList ID="itemLists"  RepeatDirection="Vertical" RepeatColumns="4" runat="server" >
 
   <ItemTemplate>
@@ -46,6 +47,7 @@
   </ItemTemplate>
 	   
 </asp:DataList>
+</div>
 <br />	
 
 <!-- DATA PAGER -->
@@ -70,10 +72,10 @@
 <!-- SEARCH BOX & BUTTON -->
 
 Customer  <asp:Label ID="lblCustomerName" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"  CssClass="DisplayCustomerInfo"  Width="200px"></asp:Label>&nbsp;&nbsp;
-No <asp:Label ID="lblCustomerNumber" runat="server" Text="&nbsp;&nbsp;" CssClass="DisplayCustomerInfo" Width="40px"></asp:Label>
+No <asp:Label ID="lblCustomerNumber" runat="server" Text="-" CssClass="DisplayCustomerInfo" Width="40px"></asp:Label>
 
 <asp:Button ID="BtnSearch" runat="server" Text="GO"  CssClass="GoBtn"   OnClick="SearchCustomer" style="float:right;" /> 
-<input type="text" id="SearchBox" Class="SearchCustomerBox" runat="server" style="float:right;"  placeholder="Search Customer" > 
+<input type="text" id="SearchBox" Class="SearchCustomerBox" runat="server" style="float:right;"  placeholder="Find Customer" > 
 
 <!--HIDDEN BUTTON + INPUT FOR GETTING VALUE -->
 
@@ -86,7 +88,7 @@ No <asp:Label ID="lblCustomerNumber" runat="server" Text="&nbsp;&nbsp;" CssClass
 <hr /> <br />
 
 <!-- 2) CART TABLE DIV -->
-<div style="display: block;   overflow:auto;  height:55%">
+<div style="display: block;   overflow:auto;  height:52%">
 
 	<asp:GridView ID="GridView1"  runat ="server" OnRowDeleting="RowDelete" OnRowCreated = "RowCreate"   HeaderStyle-CssClass="ListHeader">
 		<Columns>
@@ -112,7 +114,7 @@ No <asp:Label ID="lblCustomerNumber" runat="server" Text="&nbsp;&nbsp;" CssClass
 <tr>
 
 <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
-<td><asp:Button ID="BtnCheckOut" runat="server" Text="CHECK OUT" onclick="CheckOut"  CssClass="loginBtn" /></td>
+<td><asp:Button ID="BtnCheckOut" runat="server" Text="CHECK OUT" onclick="CheckOut"  CssClass="loginBtn" Width="200px" /></td>
 </tr>
 
 </table>	
