@@ -10,10 +10,10 @@
 	
 <div style="width:95%;  display: flex; flex-wrap: wrap;">
 	
-<!-- 왼쪽  30% Section-->
-<div style="width:35%;  height:380px; border: 1px solid yellow;" >
+<!-- ITEM LIST SECTION-->
+<div style="width:40%;  height:380px;" >
 
-<br />
+<!-- CATEGORY BUTTONS -->
 <div>	
 <asp:Button ID="CatAll" runat="server" ClientIDMode="Static" Text="All" CommandArgument="All" OnClick="SelectCat" CssClass="CatBtn" />
 <asp:Button ID="CatGarment" runat="server" ClientIDMode="Static" Text="Garment" CommandArgument="GARMENT" OnClick="SelectCat" CssClass="CatBtn" />
@@ -23,75 +23,99 @@
 <asp:Button ID="CatArmor" runat="server" ClientIDMode="Static" Text="Armor" CommandArgument="ARMOR" OnClick="SelectCat" CssClass="CatBtn"  />
 <asp:Label ID="CatSelect" runat="server" Text="All" Visible="false"  ></asp:Label>
 </div>
+<br />
 	
-
-<asp:DataList ID="itemLists"  RepeatDirection="Horizontal" RepeatColumns="4" runat="server" >
+<!-- ITEM DISPLAY -->
+<asp:DataList ID="itemLists"  RepeatDirection="Vertical" RepeatColumns="4" runat="server" >
 
   <ItemTemplate>
-     <asp:Label ID="itemName" runat="server" Text='<%# Eval("Name") %>' Width="100px" Style="font-size:11px" /><br />	  
-	 <asp:ImageButton ID="itemImage" runat="server" ImageUrl='<%# Eval("URL") %>' CommandArgument='<%# Eval("NO") %>' OnClick="SelectItem" Width="50px" Height="50px"  ValidateRequestMode="Inherit" CausesValidation="False" /> <br />
-	 <asp:Label ID="itemNo" runat="server" Text='<%# Eval("RetailPrice") %>' Style="font-size:13px; font-weight:600;"  /> 
+
+     <asp:Label ID="itemName" runat="server" Text='<%# Eval("Name") %>' Style="font-size:13px;  color:#faf8f2;" Width="120px" /><br />	  
 	 
-	 <asp:Label ID="QtySelect" runat="server" Text="" style="font-size:8px;"  ></asp:Label><br />
-	 <asp:Label ID="Label1" runat="server" Text='<%# Eval("Quantity") %>' ForeColor="#33CC33" ></asp:Label>
-	 <asp:DropDownList ID="itemQtydll" runat="server" DataSource='<%# Stock((int)Eval("Quantity")) %>'  OnSelectedIndexChanged="SelectCartQty"  AutoPostBack="True" CssClass="ProvinceInput">		 
+	 <asp:ImageButton ID="itemImage" runat="server" ImageUrl='<%# Eval("URL") %>' CommandArgument='<%# Eval("NO") %>' OnClick="SelectItem" Width="60px" Height="60px"  ValidateRequestMode="Inherit" CausesValidation="False" /> <br />
+	 
+	 <asp:Label ID="itemPrice" runat="server" Text= '<%# Eval("RetailPrice") %>' Style="font-size:15px; font-weight:600;"  /> 
+	 
+	
+	 <asp:Label ID="lblStock" runat="server" Text="stock"  style="font-size:14px; display:block;  "></asp:Label> 
+	 
+	 <asp:DropDownList ID="itemQtydll" runat="server" DataSource='<%# Stock((int)Eval("Quantity")) %>'  OnSelectedIndexChanged="SelectCartQty"  AutoPostBack="True" CssClass="QtyInputDll">		 
 	 </asp:DropDownList>
+	 
+	  <asp:Label ID="HdnQtySelect" runat="server"   Visible="false"></asp:Label> 
   </ItemTemplate>
 	   
-  </asp:DataList>
+</asp:DataList>
+<br />	
 
-	<table>
+<!-- DATA PAGER -->
+	<table style="margin-right:auto; margin-left:auto;">
         <tr>
-            <td><asp:LinkButton ID="BtnPrevious" runat="server" onclick="LinkButton2_Click" CssClass="DataPager"> Previous</asp:LinkButton></td>
-            <td><asp:LinkButton ID="BtnNext" runat="server" onclick="LinkButton3_Click" CssClass="DataPager"> Next</asp:LinkButton></td>
+            <td><asp:LinkButton ID="BtnPrevious" runat="server" onclick="LinkButton2_Click" CssClass="ItemDataPager"> Previous</asp:LinkButton></td>
+			<td>&nbsp&nbsp&nbsp&nbsp</td>
+            <td><asp:LinkButton ID="BtnNext" runat="server" onclick="LinkButton3_Click" CssClass="ItemDataPager"> Next</asp:LinkButton></td>
         </tr>
     </table>  
 </div>
 
 
-<!-- 오른쪽  50% Section-->
-<div style="width:50%;  margin-left:20px; overflow:auto; height:380px; border: 1px solid yellow;"> 
+<!-- CART SECTION -->
+<div style="width:50%;  margin-left:20px; overflow:auto; height:380px; "> 
 
 
 
-<!-- 1) Customer Display div -->
-<div style="display: block;  border: 1px solid yellow; ">
+<!-- 1) CUSTOMER DISPLAY DIV -->
+<div style="display: block;">
 
 <!-- SEARCH BOX & BUTTON -->
-<input type="text" id="SearchBox" Class="SearchInput" runat="server"  >
-<asp:Button ID="BtnSearch" runat="server" Text="SEARCH"  CssClass="SearchBtn"  Width="60px"  OnClick="SearchCustomer" /> 
 
+Customer  <asp:Label ID="lblCustomerName" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"  CssClass="DisplayCustomerInfo"  Width="200px"></asp:Label>&nbsp;&nbsp;
+No <asp:Label ID="lblCustomerNumber" runat="server" Text="&nbsp;&nbsp;" CssClass="DisplayCustomerInfo" Width="40px"></asp:Label>
 
-<!-- HIDDEN INPUT & BUTTON FOR DISPLAY CUSTOMER NAME ON LABEL -->
+<asp:Button ID="BtnSearch" runat="server" Text="GO"  CssClass="GoBtn"   OnClick="SearchCustomer" style="float:right;" /> 
+<input type="text" id="SearchBox" Class="SearchCustomerBox" runat="server" style="float:right;"  placeholder="Search Customer" > 
+
+<!--HIDDEN BUTTON + INPUT FOR GETTING VALUE -->
 
 <asp:Button ID="BtnHdn" runat="server" OnClick="convert" ClientIDMode="Static" CssClass="hidden" />
-<input id="IptHdn" runat="server"  ClientIDMode="Static" Class="lblCustomer" hidden="hidden"> <br />
-
-Customer :<asp:Label ID="lblCustomerName" runat="server" Text="Customer Name Here" BackColor="#CC33FF"></asp:Label>
-
+<input id="HdnCName" runat="server"  ClientIDMode="Static" hidden="hidden"> 
+<input id="HdnCNum" runat="server"  ClientIDMode="Static" hidden="hidden"> 
+	
+<br />
 </div>
+<hr /> <br />
 
-<!-- 2) Cart List div -->
-<div style="display: block;  border: 1px solid white; overflow:auto;  height:280px;">
+<!-- 2) CART TABLE DIV -->
+<div style="display: block;   overflow:auto;  height:55%">
 
 	<asp:GridView ID="GridView1"  runat ="server" OnRowDeleting="RowDelete" OnRowCreated = "RowCreate"   HeaderStyle-CssClass="ListHeader">
 		<Columns>
-			<asp:CommandField ShowDeleteButton="True" DeleteText="Cancel" ButtonType="Button" ItemStyle-ForeColor="#CCCCFF" ControlStyle-CssClass="CatBtn" ></asp:CommandField>
+			<asp:CommandField ShowDeleteButton="True" DeleteText="Cancel" ButtonType="Button" ItemStyle-ForeColor="#CCCCFF" ControlStyle-CssClass="CancelBtn" ></asp:CommandField>
 		</Columns>
 	</asp:GridView>
 </div>
 
-<!-- 3) Net Total & Grand Total List div -->
-<div style="display: block; border: 1px solid white;">
-<asp:Label ID="lblNetTotal" runat="server" Text="Net Total" ForeColor="White"  Font-Italic="True"></asp:Label> &nbsp; &nbsp; &nbsp; 
-<asp:Label ID="subTotal" runat="server" Text="0"  ForeColor="White" BackColor="#CC99FF" Width="100px"></asp:Label><br />
+<!-- 3) NET TOTAL + GRAND TOTAL DIV -->
+<div style="display: block; border-top:1px solid yellow;">
+<table style="float:right;">
 
-<asp:Label ID="lblGrandTotal" runat="server" Text="Grand Total" ForeColor="White"  Font-Italic="True"></asp:Label> &nbsp; &nbsp; &nbsp; 
-<asp:Label ID="grandTotal" runat="server" Text="0"  ForeColor="White" BackColor="#CC00CC" Width="120px"></asp:Label>
+<tr>
+<td><asp:Label ID="lblNetTotal" runat="server" Text="Net Total"  Font-Italic="True"></asp:Label> &nbsp; &nbsp; &nbsp;</td> 
+<td><asp:Label ID="subTotal" runat="server" Text="0" CssClass="DisplayTotalInfo" Width="150px"  ></asp:Label></td>
+</tr>
 
-<asp:Button ID="BtnCheckOut" runat="server" Text="TEST" onclick="CheckOut"  />
-	<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-	
+<tr>
+<td><asp:Label ID="lblGrandTotal" runat="server" Text="Grand Total" ForeColor="White"  Font-Italic="True"></asp:Label> &nbsp; &nbsp; &nbsp; </td>
+<td><asp:Label ID="grandTotal" runat="server" Text="0" CssClass="DisplayTotalInfo" Width="150px" ></asp:Label></td>
+</tr>
+
+<tr>
+
+<td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
+<td><asp:Button ID="BtnCheckOut" runat="server" Text="CHECK OUT" onclick="CheckOut"  CssClass="loginBtn" /></td>
+</tr>
+
+</table>	
 </div>
 
 </div>

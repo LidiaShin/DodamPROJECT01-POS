@@ -15,24 +15,17 @@
 			<ul class="navigation">        
 	        
 			<li class="nav-item"><asp:LinkButton ID="linkhome" runat="server" OnClick="linkhome_Click" PostBackUrl="~/000home.aspx"
-				style="border-top-right-radius:10px; border-top-left-radius:10px; margin-top: 30px;">Home(HL)</asp:LinkButton ></li>
-			
-			<li class="nav-item">
+				style="border-top-right-radius:10px; border-top-left-radius:10px; margin-top: 30px;">Home</asp:LinkButton ></li>
 				
-				
-
-			 <asp:LinkButton ID="linkpos" runat="server" Text="POS" OnClick="linkpos_Click" PostBackUrl="~/010pos.aspx" />
-
-			</li>
+			<li class="nav-item"><asp:LinkButton ID="linkpos" runat="server" PostBackUrl="~/010pos.aspx" OnClick="linkpos_Click">POS</asp:LinkButton></li>
+			<li class="nav-item"><asp:LinkButton ID="linkitem" runat="server" PostBackUrl="~/020item.aspx" OnClick="linkitem_Click">Item</asp:LinkButton></li>
 			
-			<li class="nav-item"><asp:LinkButton ID="linkitem" runat="server" PostBackUrl="~/020item.aspx" OnClick="linkitem_Click">Item(HL)</asp:LinkButton></li>
-			
-			<li class="nav-item"><asp:LinkButton ID="linkcustomer" runat="server" PostBackUrl="~/030customer.aspx" OnClick="linkcustomer_Click">Customer(HL)</asp:LinkButton></li>
+			<li class="nav-item"><asp:LinkButton ID="linkcustomer" runat="server" PostBackUrl="~/030customer.aspx" OnClick="linkcustomer_Click">Customer</asp:LinkButton></li>
 
-			<li class="nav-item"><asp:LinkButton ID="linkreport" runat="server" PostBackUrl="~/040report.aspx" OnClick="linkreport_Click">Report(HL)</asp:LinkButton></li>
+			<li class="nav-item"><asp:LinkButton ID="linkreport" runat="server" PostBackUrl="~/040report.aspx" OnClick="linkreport_Click">Report</asp:LinkButton></li>
 			
 			<li class="nav-item"><asp:LinkButton ID="linkaboutme" runat="server" PostBackUrl="~/050aboutme.aspx" 
-				style="border-bottom-right-radius:10px; border-bottom-left-radius:10px;" OnClick="linkaboutme_Click">About Me(HL)</asp:LinkButton></li>
+				style="border-bottom-right-radius:10px; border-bottom-left-radius:10px;" OnClick="linkaboutme_Click">About</asp:LinkButton></li>
 			
 			</ul>
 

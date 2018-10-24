@@ -112,13 +112,22 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.LinkButton BtnNext;
         
         /// <summary>
-        /// SearchBox control.
+        /// lblCustomerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SearchBox;
+        protected global::System.Web.UI.WebControls.Label lblCustomerName;
+        
+        /// <summary>
+        /// lblCustomerNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustomerNumber;
         
         /// <summary>
         /// BtnSearch control.
@@ -130,6 +139,15 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Button BtnSearch;
         
         /// <summary>
+        /// SearchBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SearchBox;
+        
+        /// <summary>
         /// BtnHdn control.
         /// </summary>
         /// <remarks>
@@ -139,22 +157,22 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Button BtnHdn;
         
         /// <summary>
-        /// IptHdn control.
+        /// HdnCName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText IptHdn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText HdnCName;
         
         /// <summary>
-        /// lblCustomerName control.
+        /// HdnCNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCustomerName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText HdnCNum;
         
         /// <summary>
         /// GridView1 control.
@@ -202,15 +220,6 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Label grandTotal;
         
         /// <summary>
-        /// BtnCheckOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCheckOut;
-        
-        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -218,5 +227,14 @@ namespace DodamPOS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// BtnCheckOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCheckOut;
     }
 }

@@ -12,8 +12,6 @@ namespace DodamPOS
 {
     public partial class _001pos : System.Web.UI.Page
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack && Session["itemCat"] != null)
@@ -23,16 +21,13 @@ namespace DodamPOS
 
                 Session["iTable"] = new DataTable();
 
-                iTable.Columns.Add("No", typeof(string));
-                iTable.Columns.Add("name", typeof(string));
-
-                iTable.Columns.Add("unit price", typeof(double));
-                iTable.Columns.Add("qty", typeof(double));
-                iTable.Columns.Add("price", typeof(double));
-
-                iTable.Columns.Add("tax", typeof(double));
-
-                //Label2.Text= lblCustomerName.Value.ToString();
+                iTable.Columns.Add("orderno", typeof(string)); // Column[0] invisible
+                iTable.Columns.Add("No", typeof(string));  // Column[1] 
+                iTable.Columns.Add("name", typeof(string));  // Column[2] 
+                iTable.Columns.Add("unitprice", typeof(double));  // Column[3] 
+                iTable.Columns.Add("qty", typeof(double));  // Column[4] 
+                iTable.Columns.Add("amount", typeof(double));  // Column[5] 
+                iTable.Columns.Add("tax", typeof(double));  // Column[6] 
 
             }
 
@@ -43,21 +38,17 @@ namespace DodamPOS
 
                 Session["iTable"] = new DataTable();
 
-                iTable.Columns.Add("No", typeof(string)); //Cell [0]
-                iTable.Columns.Add("name", typeof(string)); // Cell[1]
-
-                iTable.Columns.Add("unit price", typeof(double)); // Cell[2]
-                iTable.Columns.Add("qty", typeof(double)); // Cell [3]
-                iTable.Columns.Add("price", typeof(double)); //Cell[4]
-
-                iTable.Columns.Add("tax", typeof(double)); // Cell [5]
-
-                //Label2.Text = lblCustomerName.Value.ToString();
+                iTable.Columns.Add("orderno", typeof(string));   // Column[0] invisible
+                iTable.Columns.Add("No", typeof(string));  // Column[1] 
+                iTable.Columns.Add("name", typeof(string));  // Column[2] 
+                iTable.Columns.Add("unitprice", typeof(double));  // Column[3] 
+                iTable.Columns.Add("qty", typeof(double));  // Column[4] 
+                iTable.Columns.Add("amount", typeof(double));  // Column[5] 
+                iTable.Columns.Add("tax", typeof(double));  // Column[6] 
 
             }
         }
         DataTable itemTable { get; set; }
-
        
         int pg = 0;
         public int CurrentPageIndex
@@ -92,9 +83,9 @@ namespace DodamPOS
 
                 catch
                 {
-                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('error');</script>");
+                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Sorry, Error Occured during the process, Please select again, ');</script>");
                 }
-                //finally
+                
             }
             else
             {
@@ -122,13 +113,13 @@ namespace DodamPOS
         }
 
 
-        protected void LinkButton2_Click(object sender, EventArgs e) // page previous
+        protected void LinkButton2_Click(object sender, EventArgs e) // PAGE PREVIOUS
         { 
             CurrentPageIndex++;
             ItemViewByCat(CatSelect.Text);
             
         }
-        protected void LinkButton3_Click(object sender, EventArgs e) // page next
+        protected void LinkButton3_Click(object sender, EventArgs e) // PAGE NEXT
         {
             CurrentPageIndex--;
             ItemViewByCat(CatSelect.Text);
@@ -139,16 +130,16 @@ namespace DodamPOS
         {
             ArrayList values = new ArrayList();
 
-            for (int i = -1; i < inCount; i++)
+            for (int i = inCount; i > -1; i--)
             {
-                values.Add("" + (i+1)); // increment i and add.
+                values.Add("" + (i)); // DECREMENT I AND ADD TO DLL
             }
 
             return values;
         }
 
-
-        protected void SelectCat(object sender, EventArgs e) // Select Category Button
+        // SELECT ITEM CATEGORY
+        protected void SelectCat(object sender, EventArgs e)
                 {
                     Button btn = (Button)(sender);
                     string myCat = btn.CommandArgument;
@@ -158,57 +149,36 @@ namespace DodamPOS
                     ItemViewByCat(myCat);      
                  }
 
-        // CLICK BUTTON FOR CUSTOMER SEARCHING     
-        protected void SearchCustomer(object sender,EventArgs e)
+        // CART TABLE CREATE
+        protected void RowCreate(object sender, GridViewRowEventArgs e) // Start Shopping
         {
-            //searchName = SearchBox.Value.ToString();
-            try
-            {
-
-                Session["SearchName"] = SearchBox.Value.ToString();
-                ClientScript.RegisterStartupScript(this.Page.GetType(), "",
-                "window.open('011pos_seeCustomerList.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
-            }
-            catch
-            {
-
-            }
+            e.Row.Cells[0].Width = 70; // CALCEL BUTTON COLUMN
+            e.Row.Cells[1].Width = 10; //  ORDER NO COLOMN (INVISIBLE)
+            e.Row.Cells[2].Width = 40; // ITEM NO COLUMN
+            e.Row.Cells[3].Width = 170; // ITEM NAME CALUMN
+            e.Row.Cells[4].Width = 90;  // UNIT PRICE CALUMN
+            e.Row.Cells[5].Width = 40; // QUANTITY CALUMN
+            e.Row.Cells[6].Width = 90; //AMOUNT CALUMN
+            e.Row.Cells[7].Width = 60; //TAX CALUMN
+            e.Row.Cells[1].Visible = false;
         }
 
 
-        string name
+        // CANCEL ITEM
+        protected void RowDelete(object sender, GridViewDeleteEventArgs e) 
         {
-            get
-            { return (string)ViewState["name"]; }
+            DataTable iTable = (DataTable)Session["iTable"];
 
-            set
-            { ViewState["name"] = value; }
-        }
-
-        protected void convert(object sender, EventArgs e)
-        {
-            ViewState["name"]= IptHdn.Value.ToString();
-            lblCustomerName.Text = name;
+           
+            iTable.Rows[e.RowIndex].Delete();
             
-        }
-
-
-
-
-        protected void RowDelete(object sender, GridViewDeleteEventArgs e) // Cancel Cart Item
-        {
-            DataTable jTable = (DataTable)Session["iTable"];
-
-            //Double CancelItemQty = Double.Parse(jTable.Rows[e.RowIndex][3].ToString());
-            jTable.Rows[e.RowIndex].Delete();
-            
-            GridView1.DataSource = jTable;
+            GridView1.DataSource = iTable;
             GridView1.DataBind();
 
             
-            if (jTable.Rows.Count>0)
+            if (iTable.Rows.Count>0)
             {
-                object Sum = jTable.Compute(" SUM(price) ", "");
+                object Sum = iTable.Compute(" SUM(amount) ", "");
                 double NetTotal = Double.Parse(Sum.ToString());
                 double GrandTotal = NetTotal * 1.13;
                 subTotal.Text = NetTotal.ToString();
@@ -218,20 +188,11 @@ namespace DodamPOS
             else
             {
                 subTotal.Text = "0";
+                grandTotal.Text = "0";
             }
         }
 
-        protected void RowCreate(object sender, GridViewRowEventArgs e) // Start Shopping
-        {
-            e.Row.Cells[0].Width = 100; // Cancel button Cell
-            e.Row.Cells[1].Width = 50; // item No Cell
-            e.Row.Cells[2].Width = 160; // item Name Cell
-            e.Row.Cells[3].Width = 100; // item Unit Price Cell
-            e.Row.Cells[4].Width = 50;  // item Qty Cell
-            e.Row.Cells[5].Width = 120; // item Price Cell
-            e.Row.Cells[6].Width = 120;
-            //e.Row.Cells[6].Visible = false; // invoice Customer name Cell (invisible)
-        }
+        
 
         public string iCategory { get; set; }
         public string iName { get; set; }
@@ -251,18 +212,52 @@ namespace DodamPOS
             { Session["iTable"] = value; }
         }
 
-        DataTable jTable
-        {
-            get
-            { return (DataTable)Session["jTable"]; }
 
-            set
-            { Session["jTable"] = value; }
+
+        // SELECT CUSTOMER     
+        protected void SearchCustomer(object sender, EventArgs e)
+        {
+            try
+            {
+                Session["SearchName"] = SearchBox.Value.ToString();
+                ClientScript.RegisterStartupScript(this.Page.GetType(), "",
+                "window.open('011pos_seeCustomerList.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
+            }
+            catch
+            {
+
+            }
         }
 
-        
 
-        protected void SelectItem(object sender, EventArgs e) // Click Item Image : Select Item into Cart
+        // DISPLAY CUSTOMER NAME + NUMBER
+        protected void convert(object sender, EventArgs e)
+        {
+            lblCustomerName.Text = HdnCName.Value.ToString();
+            lblCustomerNumber.Text = HdnCNum.Value.ToString();
+
+        }
+
+
+
+        // SELECT ITEM QUANTITY
+        protected void SelectCartQty(object sender, EventArgs e)
+        {
+            //cast the sender back to a dropdownlist
+            DropDownList ddl = sender as DropDownList;
+
+            //get the namingcontainer from the dropdownlist and cast it as a datalistitem
+            DataListItem item = ddl.NamingContainer as DataListItem;
+
+            //now use findcontrol to find the label in the datalistitem
+            Label lbl = item.FindControl("HdnQtySelect") as Label;
+
+            lbl.Text = ddl.SelectedValue.ToString();
+            Session["ii"] = lbl.Text;
+        }
+
+        // SELECT ITEM (BY CLICK ITEM IMAGE)
+        protected void SelectItem(object sender, EventArgs e) 
         {
 
             if (Session["ii"] == null)
@@ -273,57 +268,74 @@ namespace DodamPOS
             else
             {
                 ImageButton ibtn = (ImageButton)(sender);
+
                 string itemNo = Convert.ToString(ibtn.CommandArgument);
 
                 CsItem theitem = new CsItem(itemNo, iCategory, iName, iPPrice, iRPrice, iNote, iImage, iQuantity, iRday);
 
-                ConnectionClass.GetItemDetail(theitem);
+                ConnectionClass.GetItemDetails(theitem);
 
                 bool found = false;
 
-                if (iTable.Rows.Count > 0) //두번째 담을때부터...
+                if (iTable.Rows.Count > 0) // IF CART IS NOT EMPTY, 
                 {
                     foreach (DataRow iRow in iTable.Rows)
                     {
-                        if (Convert.ToString(iRow["No"]) == itemNo) // 카트에 이미 담겨진 아이템이라면 (=No 가 일치한다면)
+                        if (Convert.ToString(iRow["No"]) == itemNo) // IF THE ITEM IS ALREADY IN THE CART LIST, UPDATE QTY
                         {
+                            //double temp = Convert.ToDouble(iRow["qty"]);
+
                             double temp = Convert.ToDouble(iRow["qty"]);
+
+
+                            // double uptemp = Convert.ToDouble(Session["ii"]) + temp;
+
                             double uptemp = Convert.ToDouble(Session["ii"]) + temp;
 
-                            if (uptemp > Convert.ToDouble(theitem.itemQuantity))
+                            if (uptemp > Convert.ToDouble(theitem.itemQuantity)) // IF USER TRY TO ADD ITEM MORE THAN AVAILABLE NUMBER (=QUANTITY)
                             {
-                                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Too Many! ');</script>");
+                                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Too Many! ');</script>"); // ALERT MESSSAGE
                             }
 
                             else
                             {
-                                iRow["qty"] = Convert.ToDouble(Session["ii"]) + temp;
-                                iRow["price"] = Convert.ToDouble(iRow["qty"]) * Convert.ToDouble(iRow["price"]);// 아이템 갯수 업데이트                              
+                                iRow["qty"] = Convert.ToDouble(Session["ii"]) + temp; // UPDATE QUANTITY
+
+                                // iRow["amount"] = Math.Round(Convert.ToDouble(iRow["qty"]) * Convert.ToDouble(iRow["unitprice"]),2);  
+                                iRow["amount"] = Math.Round(Convert.ToDouble(iRow["qty"]) * Convert.ToDouble(iRow["unitprice"]), 2);
+                                //iRow["tax"] = Convert.ToDouble(iRow["amount"]) * 0.13;
+                                iRow["tax"] = Math.Round(Convert.ToDouble(iRow["amount"]) * 0.13,2);
                             }
                             found = true;
                         }
                     }
 
-                    if (!found) // 카트에 없는 아이템이라면 (처음으로 추가되는 아이템이라면)
+                    if (!found) // IF ITEM IS NOT IN THE CART LIST, ADD ROW
                     {
-                        iTable.Rows.Add(itemNo, theitem.itemName, Convert.ToDouble(theitem.itemRPrice), Convert.ToDouble(Session["ii"]),
-                         Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]), Convert.ToDouble(theitem.itemRPrice)*0.13);
+                        iTable.Rows.Add("", itemNo, theitem.itemName,
+                         Math.Round(Convert.ToDouble(theitem.itemRPrice), 2),
+                         Convert.ToDouble(Session["ii"]),
+                         Math.Round(Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]), 2),
+                         Math.Round(Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]) * 0.13, 2));
                     }                 
                 }
                 
-                else // 쇼핑 시작!
+                else // IF CART IS EMPTY, 
                 {
-                iTable.Rows.Add(itemNo, theitem.itemName, Convert.ToDouble(theitem.itemRPrice), Convert.ToDouble(Session["ii"]),
-                            Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]), Convert.ToDouble(theitem.itemRPrice)*0.13);
+                iTable.Rows.Add("",itemNo, theitem.itemName, 
+                        Math.Round(Convert.ToDouble(theitem.itemRPrice),2), 
+                        Convert.ToDouble(Session["ii"]),
+                        Math.Round(Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]),2), 
+                        Math.Round(Convert.ToDouble(theitem.itemRPrice) * Convert.ToDouble(Session["ii"]) *0.13,2));
                 }
-                GridView1.DataSource = iTable;    //그리드뷰1에 데이터 넣어줌 
+                GridView1.DataSource = iTable;    //
                 GridView1.DataBind(); 
 
 
 
-                object Sum = iTable.Compute(" SUM(price) ", "");
-                double NetTotal = Double.Parse(Sum.ToString());
-                double GrandTotal = NetTotal * 1.13;
+                object Sum = iTable.Compute(" SUM(amount) ", "");
+                double NetTotal = Math.Round(Double.Parse(Sum.ToString()),2);
+                double GrandTotal = Math.Round(NetTotal * 1.13,2);
 
                 subTotal.Text = NetTotal.ToString();
                 grandTotal.Text = GrandTotal.ToString();
@@ -334,24 +346,9 @@ namespace DodamPOS
 
 
 
-
-
-        protected void SelectCartQty(object sender, EventArgs e)
-        {
-            //cast the sender back to a dropdownlist
-            DropDownList ddl = sender as DropDownList;
-
-            //get the namingcontainer from the dropdownlist and cast it as a datalistitem
-            DataListItem item = ddl.NamingContainer as DataListItem;
-
-            //now use findcontrol to find the label in the datalistitem
-            Label lbl = item.FindControl("QtySelect") as Label;
-
-            lbl.Text = ddl.SelectedValue.ToString();
-            Session["ii"] = lbl.Text;
-        }
-
-
+        string OrderDate { get; set; }
+        String OrderNum { get; set; }
+        string CustomerNum { get; set; }
 
         protected void CheckOut(object sender, EventArgs e)
         {
@@ -362,12 +359,61 @@ namespace DodamPOS
 
             else
             {
-                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Thank you ');</script>");
-               
+                // CUSTOMER NUMBER GET FROM SEARCH WINDOW
+                CustomerNum = lblCustomerNumber.Text;
 
-                string test = iTable.Rows[0]["name"].ToString();
-                Label2.Text = test;
+                try
+                {
+                    CsOrder newOrder = new CsOrder(OrderNum, CustomerNum, OrderDate);
 
+                    // INSERT ORDER + GET ORDER NUMBER
+                    ConnectionClass.CreateOrder(newOrder);
+
+
+                    // INSERT ORDER NUMBER INTO ORDERITEM TABLE (ITABLE)
+                    for (int a = 0; a < iTable.Rows.Count; a++)
+                    {
+                        iTable.Rows[a]["orderno"] = newOrder.OrderNumber;
+                    }
+
+                    // REBUILD GRIDVIEW
+                    //GridView1.DataSource = iTable;    
+                    //GridView1.DataBind();
+
+                    // UPLOAD ORDERITEM TABLE (ITABLE)
+                    ConnectionClass.UploadOrderItem(iTable);
+
+                   
+
+                    // EMPTY ITABLE
+
+                    //Session["iTable"] = null;
+                    iTable.Clear();
+                    subTotal.Text = "0";
+                    grandTotal.Text = "0";
+                    GridView1.DataSource = iTable;
+                    GridView1.DataBind();
+                    lblCustomerName.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                    lblCustomerNumber.Text = "&nbsp;&nbsp;";
+
+                    //SUCCESS MESSAGE 
+                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Thank you!');</script>");
+                    ClientScript.RegisterStartupScript(this.Page.GetType(), "","window.open('012pos_seeOrderReceipt.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
+
+                }
+
+                catch
+                {
+                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Please Select Customer, ');</script>");
+                }
+
+                finally
+                {
+                    
+
+                    //Server.TransferRequest(Request.Url.AbsolutePath, false);
+                  
+                }
 
             }
 

@@ -34,10 +34,15 @@ namespace DodamPOS
         protected void SelectName(object sender, EventArgs e)
         {
       
-            LinkButton lbtn = (LinkButton)(sender);          
-            String CustomerName = Convert.ToString(lbtn.CommandArgument);
-        
-            CustomerSelection.Value = CustomerName;        
+            LinkButton lbtn = (LinkButton)(sender);
+
+            string[] nameAndNo = new string[2];
+            nameAndNo = lbtn.CommandArgument.ToString().Split(';');
+            //String CustomerName = Convert.ToString(lbtn.CommandArgument);
+            string CustomerName = nameAndNo[0];
+            string CustomerNumber = nameAndNo[1];
+            CustomerSelection.Value = CustomerName;
+            CustomerNo.Value = CustomerNumber;
             Page.ClientScript.RegisterStartupScript(GetType(),"MyKey", "SendName();", true);
 
         }

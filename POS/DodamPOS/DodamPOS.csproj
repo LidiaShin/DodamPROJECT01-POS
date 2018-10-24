@@ -80,6 +80,7 @@
     <Content Include="000home.aspx" />
     <Content Include="010pos.aspx" />
     <Content Include="011pos_seeCustomerList.aspx" />
+    <Content Include="012pos_seeOrderReceipt.aspx" />
     <Content Include="020item.aspx" />
     <Content Include="021item_addnew.aspx" />
     <Content Include="022item_seedetail.aspx" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="011pos_seeCustomerList.aspx.designer.cs">
       <DependentUpon>011pos_seeCustomerList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="012pos_seeOrderReceipt.aspx.cs">
+      <DependentUpon>012pos_seeOrderReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="012pos_seeOrderReceipt.aspx.designer.cs">
+      <DependentUpon>012pos_seeOrderReceipt.aspx</DependentUpon>
     </Compile>
     <Compile Include="020item.aspx.cs">
       <DependentUpon>020item.aspx</DependentUpon>
@@ -197,6 +205,7 @@
     <Compile Include="CsItem.cs" />
     <Compile Include="CsItemCat.cs" />
     <Compile Include="CsItemlist.cs" />
+    <Compile Include="CsOrder.cs" />
     <Compile Include="CsProvincelist.cs" />
     <Compile Include="CsRegisterEmail.cs" />
     <Compile Include="CsUserlist.cs" />

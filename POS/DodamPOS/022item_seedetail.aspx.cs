@@ -46,7 +46,7 @@ namespace DodamPOS
                 {
                     CsItem theitem = new CsItem(iID, iCategory, iName, iPPrice, iRPrice, iNote, iImage, iQuantity, iRday);
 
-                    ConnectionClass.GetItemDetail(theitem);
+                    ConnectionClass.GetItemDetails(theitem); //  NO CURRENCY DISPLAY (FOR EASILY UPDATING)
 
                     CategoryList.SelectedItem.Text = theitem.itemCategory;
                     iNameBox.Text = theitem.itemName;

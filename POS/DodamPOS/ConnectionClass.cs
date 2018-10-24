@@ -14,6 +14,8 @@ namespace DodamPOS
     {
         private static SqlConnection cntString;
         private static SqlCommand cmdString;
+        private static SqlCommand cmdStringA;
+        private static SqlCommand cmdStringB;
 
 
         static ConnectionClass()
@@ -333,7 +335,8 @@ convert(varchar, RegisterDate,106) AS 'REGISTER DATE' FROM tblCustomer WHERE lOW
         //020 item page
         public static void GetItemList(CsItemlist itemtable)
         {
-            string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+            string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+PurchasePrice='$'+CONVERT(VARCHAR,itemPPrice),RetailPrice='$'+CONVERT(VARCHAR,itemRPrice),
 itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE' from tblItem order by itemID;");
 
             cmdString = new SqlCommand(kQuery, cntString);
@@ -426,8 +429,12 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
         public static void GetItemAll(CsItemlist itable)
         {
-            string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
-           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+            // string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+            //itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
+            //itemQty AS Quantity,itemImage AS URL from tblItem order by itemID;");
+
+           string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
+           PurchasePrice='$'+CONVERT(VARCHAR,itemPPrice),RetailPrice='$'+CONVERT(VARCHAR,itemRPrice),
            itemQty AS Quantity,itemImage AS URL from tblItem order by itemID;");
 
             cmdString = new SqlCommand(kQuery, cntString);
@@ -447,12 +454,12 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
                 cntString.Close();
             }
         }
-
+        //PurchasePrice='$'+CONVERT(VARCHAR, itemPPrice),RetailPrice='$'+CONVERT(VARCHAR, itemRPrice)
         public static void GetItemByCat(CsFilteredItemList fitem)
         {
             string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
-           itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
-           itemQty AS Quantity,itemImage AS URL from tblItem WHERE itemCategory=('{0}') order by itemID;",fitem.keyiName);
+           PurchasePrice='$'+CONVERT(VARCHAR,itemPPrice),RetailPrice='$'+CONVERT(VARCHAR,itemRPrice),
+           itemQty AS Quantity,itemImage AS URL from tblItem WHERE itemCategory=('{0}') order by itemID;", fitem.keyiName);
 
             cmdString = new SqlCommand(kQuery, cntString);
 
@@ -488,7 +495,9 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
         public static void GetItemDetail(CsItem itemdetail)
         {
-            string iQuery = string.Format(@"SELECT * FROM tblItem WHERE itemID = ('{0}');", itemdetail.itemNumber);
+            string iQuery = string.Format(@"SELECT itemID,itemCategory, itemName, 
+            FORMAT(itemPPrice,'C','en-us') AS itemPPrice, FORMAT(itemRPrice,'C','en-us') AS itemRPrice, itemNote,itemImage,itemQty,itemRegisterDate
+            FROM tblItem WHERE itemID = ('{0}');", itemdetail.itemNumber);
             cmdString = new SqlCommand(iQuery, cntString);
 
             try
@@ -522,6 +531,58 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 010 POS.ASPX
+
+        // GET ITEM DETAIL WITHOUT FORMATTNG TO CURRENCY (NEED TO CONVERT TO DOUBLE)
+        public static void GetItemDetails(CsItem itemdetail)
+        {
+            string iQuery = string.Format(@"SELECT itemID,itemCategory, itemName, 
+            itemPPrice,itemRPrice, itemNote,itemImage,itemQty,itemRegisterDate
+            FROM tblItem WHERE itemID = ('{0}');", itemdetail.itemNumber);
+            cmdString = new SqlCommand(iQuery, cntString);
+
+            try
+            {
+                cntString.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmdString);
+                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
+                da.Fill(dt);
+                ds.Tables.Add(dt);
+
+
+                itemdetail.itemCategory = dt.Rows[0]["itemCategory"].ToString();
+                itemdetail.itemName = dt.Rows[0]["itemName"].ToString();
+                itemdetail.itemQuantity = dt.Rows[0]["itemQty"].ToString();
+                itemdetail.itemNote = dt.Rows[0]["itemNote"].ToString();
+
+                itemdetail.itemPPrice = dt.Rows[0]["itemPPrice"].ToString();
+                itemdetail.itemRPrice = dt.Rows[0]["itemRPrice"].ToString();
+
+                itemdetail.itemImage = dt.Rows[0]["itemImage"].ToString();
+
+            }
+
+            finally
+            {
+                cntString.Close();
+            }
+        }
+
         public static void UpdateItemDetail(CsItem olditem)
         {
             string iQuery = string.Format(@"UPDATE tblItem SET itemCategory=(N'{0}'),itemName=(N'{1}'),
@@ -545,16 +606,65 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
         }
 
 
-
-        public static void UploadOrderItem(CsItem olditem)
+        public static void CreateOrder(CsOrder neworder)
         {
-           
-            SqlBulkCopy bulkCopy = new SqlBulkCopy(cntString);
+            string aQuery = string.Format(@"INSERT INTO tblOrder(orderNO, orderCustomerNO, orderDate) 
+            VALUES (NEXT VALUE FOR SQorder,'{0}',getdate());",neworder.CustomerNumber);
 
-            DataTable DT = new DataTable();
-            bulkCopy.WriteToServer(DT);
+            string bQuery = string.Format(@"SELECT current_value FROM sys.sequences WHERE name = 'SQorder'; ");
 
 
+
+            cmdStringA = new SqlCommand(aQuery, cntString);
+            cmdStringB = new SqlCommand(bQuery, cntString);
+
+            try
+            {
+                // ORDER INSERT
+                cntString.Open();
+                cmdStringA.ExecuteNonQuery();
+
+                // GET ORDERNUMBER (CURVAL)
+                SqlDataAdapter da = new SqlDataAdapter(cmdStringB);
+                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
+                da.Fill(dt);
+                ds.Tables.Add(dt);
+
+
+                neworder.OrderNumber = dt.Rows[0]["current_value"].ToString();
+            }
+
+            finally
+            {
+                cntString.Close();
+            }
+        }
+
+        public static void UploadOrderItem(DataTable ItemTable)
+        {
+            try
+            {
+                //SqlBulkCopy bulkCopy = new SqlBulkCopy(cntString);
+                SqlBulkCopy bulkCopy = new SqlBulkCopy(ConfigurationManager.ConnectionStrings["dodampos"].ConnectionString, SqlBulkCopyOptions.FireTriggers);
+                cntString.Open();
+
+                bulkCopy.ColumnMappings.Add("orderno", "orderID");
+                bulkCopy.ColumnMappings.Add("No", "orderItemID");
+                bulkCopy.ColumnMappings.Add("unitprice", "orderItemUPrice");
+                bulkCopy.ColumnMappings.Add("qty", "orderItemQty");
+                bulkCopy.ColumnMappings.Add("amount", "orderItemPrice");
+                bulkCopy.ColumnMappings.Add("tax", "orderItemTax");
+
+
+                bulkCopy.DestinationTableName = "tblOrderItem";
+                bulkCopy.WriteToServer(ItemTable);
+
+            }
+            finally
+            {
+                cntString.Close();
+            }
 
         }
 

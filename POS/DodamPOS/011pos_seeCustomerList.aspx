@@ -10,9 +10,8 @@
 <script type="text/javascript">
 
 	  function SendName(){
-		  opener.document.getElementById("IptHdn").value = document.getElementById("CustomerSelection").value;
-		  //opener.document.getElementById("IptHdn").innerHTML = document.getElementById("CustomerSelection").value;
-		  //opener.document.getElementById("IptHdn").innerText = document.getElementById("CustomerSelection").value;
+		  opener.document.getElementById("HdnCName").value = document.getElementById("CustomerSelection").value;
+		  opener.document.getElementById("HdnCNum").value = document.getElementById("CustomerNo").value;
 		  window.opener.document.getElementById("BtnHdn").click();
 		  window.close();
 	}
@@ -23,7 +22,7 @@
 </head>
 	<body id="container_newwindow">
     <form id="form1" runat="server">
-		<h2>Select Customer</h2><hr />
+		<h2>Select Customer</h2><hr /><br />
 
     <table style="width:600px; border-collapse: collapse; border-spacing: 0; text-align:left; position:center; ">   
 	   <tr style="font-size:20px;" class="ListHeader">
@@ -44,7 +43,7 @@
     
 	<td style="width:50px; text-align:center;"><asp:Label ID="lblCustomerID" runat="server" Text='<%# Eval("NO") %>' /></td>
     
-	<td style="text-align:left; width:150px; "><asp:LinkButton ID="lkCustomerName" runat="server" Text ='<%# Eval("NAME") %>' CommandArgument='<%# Eval("NAME") %>' Font-Overline="false" ForeColor="White"  
+	<td style="text-align:left; width:150px; "><asp:LinkButton ID="lkCustomerName" runat="server" Text ='<%# Eval("NAME") %>' CommandArgument='<%# Eval("NAME")+ ";" +Eval("NO")%>' Font-Overline="false" ForeColor="White"  
 		onmouseover="this.style.color='red'" onmouseout="this.style.color='white'" OnClick="SelectName"  /></td>
 
     <td style="width:150px; text-align:left; "><asp:Label ID="lblCustomerEmail" runat="server" Text ='<%# Eval("E-MAIL") %>' /></td>
@@ -60,6 +59,7 @@
 		
 <!-- HIDDEN INPUT FOR SENDING CHOSEN CUSTOMER NAME ON LABEL -->		
 <input id="CustomerSelection" type="text" runat="server"  hidden="hidden" />
+<input id="CustomerNo" type="text" runat="server"  hidden="hidden" />
 
 </form>
 </body>

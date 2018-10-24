@@ -140,6 +140,10 @@ body {
 	transition-duration: 0.25s;
 }
 
+	.loginBtn:hover {
+		
+		background-color: #c8a2ac;
+	}
 /*Master Page Start Here*/
 
 
@@ -372,12 +376,12 @@ label[for="nav-trigger"] {
 	outline: 0;
 	background-color: white;
 	border: 0;
-	padding: 2px 3px;
+	
 	color: #282b32;
 	border-radius: 1px;
 	width: 80px;
-	cursor: pointer;
-	font-size: 12px;
+	
+	
 	transition-duration: 0.25s;
 }
 
@@ -503,18 +507,18 @@ label[for="nav-trigger"] {
 	outline: 0;
     background: linear-gradient(180deg, rgba(175,194,189, 0.8) 20%,rgba(227,230,240, 0.3) 100%);
 	border: 0;
-	padding: 5px 5px;
-	color: #282b32;
+	color:white;
 	border-radius: 2px;
-	width: 60px;
+	width: 70px;
+	height:30px;
 	cursor: pointer;
-	font-size: 12px;
+	font-size: 14px;
 	transition-duration: 0.25s;
 }
 
 	.CatBtn:hover {
-		background-color:cadetblue;
-		color:white;
+		background-color:antiquewhite;
+		color:brown;
 	}
 
 
@@ -530,4 +534,90 @@ label[for="nav-trigger"] {
 
 .hidden {
 	display: none;
+}
+
+
+.QtyInputDll {
+	outline: 0;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	background-color: rgba(142,150,175, 0.5);
+	border-radius: 2px;
+	
+	color: white;
+	-webkit-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+	font-weight: 300;
+}
+
+.ItemDataPager {
+	text-decoration: none;
+	color: #e2f6fd;
+	font-size: 16px;
+}
+
+	.ItemDataPager:hover {
+
+		background-color:darkslateblue;
+		
+	}
+
+
+.DisplayCustomerInfo {
+	outline: 0;
+	
+	background-color: rgba(255, 255, 255, 0.2);
+	
+	border-radius: 3px;	
+	text-align: center;
+	font-size: 24px;
+	color: white;
+	font-weight:700;
+	margin-bottom:3px;
+}
+
+.SearchCustomerBox {
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	background-color: rgba(142,150,175, 0.5);
+	border-radius: 3px;
+	width: 100px;
+	height: 20px;
+	font-size: 12px;
+	color: white;
+}
+
+.GoBtn {
+	font-size:12px;
+	outline: 0;
+	background-color:coral;
+	border: 0;
+	color:white;
+	border-radius: 1px;
+	margin-left:10px;
+	height: 20px;
+	padding:1px;
+}
+
+.CancelBtn {
+	outline: 0;
+	background: linear-gradient(180deg, rgba(175,194,189, 0.8) 20%,rgba(227,230,240, 0.3) 100%);
+	border: 0;
+	color: white;
+	border-radius: 2px;
+	width: 60px;
+	height: 20px;
+	cursor: pointer;
+	font-size: 14px;	
+}
+
+.DisplayTotalInfo {
+	outline: 0;
+	background-color: rgba(255, 255, 255, 0.2);
+	float:right;
+	border-radius: 2px;
+	text-align: center;
+	font-size: 24px;
+	color: lightgreen;
+	font-weight: 700;
+	margin-top:2px;
+
 }

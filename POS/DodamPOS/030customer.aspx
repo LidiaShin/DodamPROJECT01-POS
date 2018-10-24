@@ -96,6 +96,6 @@
 	        <!--검색버튼 -->
 		   <asp:Button ID="Button1" runat="server" Text="SEARCH" OnClick="Button1_Click" CssClass="SearchBtn"  />
 
-	<asp:Label ID="testlabel" runat="server" Text="Label"></asp:Label>
+	<asp:Label ID="testlabel" runat="server" Text=""></asp:Label>
 
 </asp:Content>
