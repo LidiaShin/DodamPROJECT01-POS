@@ -13,43 +13,60 @@
 <div>
 
 <h2>Customer Receipt </h2><hr />
-<p style="text-align:right;"> 
 
-Invoice # :<asp:Label ID="lblONum" runat="server" Text="ORDER NUM" Font-Size="Large" ></asp:Label>
-Customer: <asp:Label ID="lblCName" runat="server" Text="CUSTOMER NAME" Font-Size="Large" ></asp:Label>
-
-</p>
        
 <div style="width:90%;  height:280px; margin:2px auto 5px auto; border:1px solid yellow;">
 
-<!-- (1) RECEIPT FIELD --> 
-<div style="display:block; border:1px solid red; height:60%; overflow:auto;"> 
+<!-- (1) NAME + DATE --> 
+<div style="display:block; border:1px solid lightgreen; width:100%; "> 
 
- <table style="border-collapse: collapse; width:100%; border-spacing: 0; text-align:left; position:center; ">   
-	   <tr style="font-size:14px;" class="ListHeader">
-	   <th style="width:5%">Code</th>
-       <th style="width:40%">Item Name</th>       
-       <th style="width:15%">Price</th>
-	   <th style="width:10%">Qty</th>
-	   <th style="width:20%">Amount</th>
-	   <th style="width:10%;">Tax</th>
-       </tr>
+<p style="text-align:right; font-size:14px;"> 
+Invoice # :<asp:Label ID="lblONum" runat="server" Text="ORDER NUM"  ></asp:Label>
+Customer: <asp:Label ID="lblCName" runat="server" Text="CUSTOMER NAME"  ></asp:Label>
+Date: <asp:Label ID="lblOrderDate" runat="server" Text="DATE" ></asp:Label> 
+</p>
+</div>
+<br />
 
+<!-- (2) RECEIPT TABLE (GRID VIEW) --> 
+<div style="display:block; border:1px solid lightgreen; width:100%; height:55%; overflow:auto;"> 
 
-	   <tr><td> NUMBER + CONTENTS</td></tr>
-</table>
+	<asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCreated = "RowCreate" Width="100%">
+		<AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
 
+		<EditRowStyle BackColor="#999999"></EditRowStyle>
+
+		<FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+		<HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+		<PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>
+
+		<RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
+
+		<SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+		<SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
+
+		<SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
+
+		<SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
+
+		<SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
+	</asp:GridView>
 </div>
 
-<!-- (2) TOTAL FIELD --> 
-<div style="display:block; border:1px solid red; ">
-Total Sales Qty : <br />
-Total Amount : <br />
-Total Tax: <hr style="color:lightyellow" />
-Grand Total
+<!-- (3) TOTAL FIELD --> 
+<br />
+<div style="display:block; border:1px solid red; margin-bottom:5ppx; ">
+Total Sales Qty : <asp:Label ID="lblTQty" runat="server" Text="1"></asp:Label><br />
+Total Amount :<asp:Label ID="lblTAmt" runat="server" Text="2"></asp:Label> <br />
+Total Tax: <asp:Label ID="lblTTax" runat="server" Text="3"></asp:Label>
+<hr style="color:lightyellow" />
+Grand Total : <asp:Label ID="lblGTotal" runat="server" Text="4"></asp:Label>
 </div>
 
-<!-- (3) BUTTONS FIELD --> 
+<!-- (4) BUTTONS FIELD --> 
 
 <div style="display: block; margin-left:40%; border:1px solid white; ">
 <asp:Button ID="btnPrint" runat="server" Text="PRINT OUT" CssClass="RegisterBtn"   BackColor="#FF9966" /> &nbsp;&nbsp;

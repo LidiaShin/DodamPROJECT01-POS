@@ -208,6 +208,7 @@
     <Compile Include="CsItemlist.cs" />
     <Compile Include="CsOrder.cs" />
     <Compile Include="CsProvincelist.cs" />
+    <Compile Include="CsReceipt.cs" />
     <Compile Include="CsRegisterEmail.cs" />
     <Compile Include="CsUserlist.cs" />
     <Compile Include="LINQforREPORT.designer.cs">

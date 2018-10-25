@@ -140,7 +140,9 @@ namespace DodamPOS
 
         public static void GetCustomerList(CsCustomerlist customertable)
         {
-            string dQuery = string.Format(@"SELECT customerID AS NO,(fName + '  '+ lName ) AS NAME, email AS 'E-MAIL',city AS 'CITY',Province AS 'PROVINCE',convert(varchar, RegisterDate,106) AS 'REGISTER DATE' from tblCustomer;");
+            string dQuery = string.Format(@"SELECT customerID AS NO,(fName + '  '+ lName ) AS NAME,
+email AS 'E-MAIL',city AS 'CITY',Province AS 'PROVINCE',
+convert(varchar, RegisterDate,106) AS 'REGISTER DATE' from tblCustomer;");
             cmdString = new SqlCommand(dQuery, cntString);
 
             try
@@ -605,7 +607,7 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
             }
         }
 
-
+        // POS PAGE
         public static void CreateOrder(CsOrder neworder)
         {
             string aQuery = string.Format(@"INSERT INTO tblOrder(orderNO, orderCustomerNO, orderDate) 
@@ -668,6 +670,49 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
         }
 
+
+
+        public static void DisplayReceipt(CsReceipt receipt)
+        {
+
+            string aQuery = string.Format
+(@"SELECT orderItemID AS CODE,ITEMNAME AS 'ITEM NAME', 
+orderItemUPrice AS 'PRICE',
+orderItemQty AS 'QTY',
+orderItemPrice  AS 'AMOUNT',
+orderitemtax AS 'TAX' 
+FROM TBLORDERITEM JOIN TBLITEM ON ORDERITEMID = ITEMID WHERE ORDERID=('{0}');
+
+SELECT SUM(orderitemQty) AS TOTALQTY,
+SUM(orderItemPrice) AS TOTALAMOUNT,
+SUM(orderitemtax) AS TOTALTAX,
+SUM(orderitemtax) + SUM(orderItemPrice) AS GRANDTOTAL,
+CONVERT(VARCHAR(20),GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time',100) AS ORDERDATE
+FROM tblOrderItem WHERE ORDERID = ('{0}')", receipt.OrderNum);
+
+            cmdString = new SqlCommand(aQuery, cntString);
+
+            try
+            {
+                cntString.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmdString);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                receipt.ReceiptTable = ds.Tables[0];
+                receipt.TotalTable = ds.Tables[1];
+                
+            }
+
+            finally
+            {
+                cntString.Close();
+            }
+
+
+
+
+        }
 
 
 

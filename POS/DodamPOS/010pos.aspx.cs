@@ -409,21 +409,23 @@ namespace DodamPOS
 
                     //Session["iTable"] = null;
                     iTable.Clear();
-                    subTotal.Text = "0";
-                    grandTotal.Text = "0";
-                    GridView1.DataSource = iTable;
-                    GridView1.DataBind();
-                    lblCustomerName.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-                    lblCustomerNumber.Text = "-";
+                    //subTotal.Text = "0";
+                    //grandTotal.Text = "0";
+                    //GridView1.DataSource = iTable;
+                    //GridView1.DataBind();
+                    //lblCustomerName.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                    //lblCustomerNumber.Text = "-";
 
-                   
+
 
 
 
 
                     //SUCCESS MESSAGE 
-                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Order Completed!');</script>");
+                            
                     ClientScript.RegisterStartupScript(this.Page.GetType(), "","window.open('012pos_seeOrderReceipt.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "refresh", "window.location.href=window.location;", true);
+
 
                 }
 
