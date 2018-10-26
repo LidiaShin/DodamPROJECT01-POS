@@ -50,7 +50,7 @@ namespace DodamPOS
         // 031 customer_addnew.aspx
         public static void GetPVlist(CsProvincelist pv)
         {
-            string bQuery = string.Format(@"SELECT * FROM tblProvince");
+            string bQuery = string.Format(@"SELECT * FROM tblProvince ORDER BY provinceCode;");
             cmdString = new SqlCommand(bQuery, cntString);
 
             try
@@ -339,7 +339,7 @@ convert(varchar, RegisterDate,106) AS 'REGISTER DATE' FROM tblCustomer WHERE lOW
         {
             string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
 PurchasePrice='$'+CONVERT(VARCHAR,itemPPrice),RetailPrice='$'+CONVERT(VARCHAR,itemRPrice),
-itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE' from tblItem order by itemID;");
+itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE' from tblItem order by itemRegisterDate DESC;");
 
             cmdString = new SqlCommand(kQuery, cntString);
 
@@ -365,7 +365,7 @@ itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE' f
             string iQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
 itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
 itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE'
-from tblItem WHERE lOWER(itemName) LIKE LOWER(N'%{0}%')order by itemID;",flist.keyiName);
+from tblItem WHERE lOWER(itemName) LIKE LOWER(N'%{0}%') ORDER BY itemRegisterDate DESC;", flist.keyiName);
             cmdString = new SqlCommand(iQuery, cntString);
 
             try
@@ -399,7 +399,7 @@ from tblItem WHERE lOWER(itemName) LIKE LOWER(N'%{0}%')order by itemID;",flist.k
             string iQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
 itemPPrice AS PurchasePrice,itemRPrice AS RetailPrice,
 itemQty AS Quantity, convert(varchar, itemRegisterDate,106) AS 'REGISTER DATE'
-from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.keyiNote);
+from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%') ORDER BY itemRegisterDate DESC;", flist.keyiNote);
             cmdString = new SqlCommand(iQuery, cntString);
 
             try
@@ -437,7 +437,7 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
            string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
            PurchasePrice='$'+CONVERT(VARCHAR,itemPPrice),RetailPrice='$'+CONVERT(VARCHAR,itemRPrice),
-           itemQty AS Quantity,itemImage AS URL from tblItem order by itemID;");
+           itemQty AS Quantity,itemImage AS URL from tblItem ORDER BY itemRegisterDate DESC;");
 
             cmdString = new SqlCommand(kQuery, cntString);
 
@@ -456,12 +456,13 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
                 cntString.Close();
             }
         }
+
         //PurchasePrice='$'+CONVERT(VARCHAR, itemPPrice),RetailPrice='$'+CONVERT(VARCHAR, itemRPrice)
         public static void GetItemByCat(CsFilteredItemList fitem)
         {
             string kQuery = string.Format(@"SELECT itemID AS NO,itemCategory AS CATEGORY,itemName AS NAME, 
            PurchasePrice='$'+CONVERT(VARCHAR,itemPPrice),RetailPrice='$'+CONVERT(VARCHAR,itemRPrice),
-           itemQty AS Quantity,itemImage AS URL from tblItem WHERE itemCategory=('{0}') order by itemID;", fitem.keyiName);
+           itemQty AS Quantity,itemImage AS URL from tblItem WHERE itemCategory=('{0}') ORDER BY itemRegisterDate DESC;", fitem.keyiName);
 
             cmdString = new SqlCommand(kQuery, cntString);
 
@@ -535,17 +536,6 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         // 010 POS.ASPX
 
         // GET ITEM DETAIL WITHOUT FORMATTNG TO CURRENCY (NEED TO CONVERT TO DOUBLE)
@@ -611,9 +601,9 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
         public static void CreateOrder(CsOrder neworder)
         {
             string aQuery = string.Format(@"INSERT INTO tblOrder(orderNO, orderCustomerNO, orderDate) 
-            VALUES (NEXT VALUE FOR SQorder,'{0}',getdate());",neworder.CustomerNumber);
+            VALUES (NEXT VALUE FOR SQOrderNum,'{0}',getdate());", neworder.CustomerNumber);
 
-            string bQuery = string.Format(@"SELECT current_value FROM sys.sequences WHERE name = 'SQorder'; ");
+            string bQuery = string.Format(@"SELECT current_value FROM sys.sequences WHERE name = 'SQOrderNum'; ");
 
 
 
@@ -677,16 +667,16 @@ from tblItem WHERE lOWER(itemNote) LIKE LOWER(N'%{0}%')order by itemID;", flist.
 
             string aQuery = string.Format
 (@"SELECT orderItemID AS CODE,ITEMNAME AS 'ITEM NAME', 
-orderItemUPrice AS 'PRICE',
+PRICE='$'+ CONVERT(VARCHAR,OrderItemUPrice),
 orderItemQty AS 'QTY',
-orderItemPrice  AS 'AMOUNT',
-orderitemtax AS 'TAX' 
+AMOUNT='$'+ CONVERT(VARCHAR,OrderItemPrice),
+TAX='$'+ CONVERT(VARCHAR,OrderItemTax)
 FROM TBLORDERITEM JOIN TBLITEM ON ORDERITEMID = ITEMID WHERE ORDERID=('{0}');
 
-SELECT SUM(orderitemQty) AS TOTALQTY,
-SUM(orderItemPrice) AS TOTALAMOUNT,
-SUM(orderitemtax) AS TOTALTAX,
-SUM(orderitemtax) + SUM(orderItemPrice) AS GRANDTOTAL,
+SELECT SUM(OrderitemQty) AS TOTALQTY,
+TOTALAMOUNT='$'+ CONVERT(VARCHAR,SUM(OrderItemPrice)),
+TOTALTAX='$'+ CONVERT(VARCHAR,SUM(OrderItemTax)),
+GRANDTOTAL='$'+CONVERT(VARCHAR,(SUM(orderitemtax) + SUM(orderItemPrice))),
 CONVERT(VARCHAR(20),GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time',100) AS ORDERDATE
 FROM tblOrderItem WHERE ORDERID = ('{0}')", receipt.OrderNum);
 
@@ -708,11 +698,157 @@ FROM tblOrderItem WHERE ORDERID = ('{0}')", receipt.OrderNum);
             {
                 cntString.Close();
             }
-
-
-
-
         }
+
+
+        // SALES REPORT
+
+        public static void DisplayReport(CsDailyReport report)
+        {
+
+string rQuery = string.Format
+(@"SELECT 
+I.ITEMCATEGORY AS CATEGORY,
+SUM(O.orderItemQty) AS QTY,
+SUM(O.ORDERITEMUPRICE * O.ORDERITEMQTY)AS NET,
+SUM(O.ORDERITEMQTY * O.ORDERITEMUPRICE + O.ORDERITEMTAX)AS GROSS
+FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO
+WHERE CAST(OT.ORDERDATE AS DATE) = CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+GROUP BY I.ITEMCATEGORY; 
+
+SELECT 
+SUM(O.ORDERITEMQTY) AS QTYTOTAL,
+SUM(O.ORDERITEMUPRICE * O.ORDERITEMQTY)AS NET,
+SUM(O.ORDERITEMQTY * O.ORDERITEMUPRICE +O.ORDERITEMTAX)AS GROSS
+FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO 
+WHERE CAST(OT.ORDERDATE AS DATE) = CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE);
+
+
+SELECT 
+CONVERT(VARCHAR(11),CONVERT(DATE,OT.ORDERDATE))  AS PASTDATE,
+I.ITEMCATEGORY AS CATEGORY,
+SUM(O.ORDERITEMQTY) AS QTY,
+SUM(O.ORDERITEMUPRICE * O.ORDERITEMQTY)AS NETTOTAL,
+SUM(O.ORDERITEMQTY * O.ORDERITEMUPRICE +O.ORDERITEMTAX)AS GROSSTOTAL
+FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO 
+WHERE CAST(OT.ORDERDATE AS DATE) < CAST( (GETDATE()-(CONVERT(INT,'0'))) AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE) AND
+CAST(OT.ORDERDATE AS DATE) > CAST( (GETDATE()-(CONVERT(INT,'8'))) AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+GROUP BY I.ITEMCATEGORY, CONVERT(VARCHAR(11),CONVERT(DATE,OT.ORDERDATE))
+
+SELECT 
+CONVERT(VARCHAR(11),CONVERT(DATE,OT.ORDERDATE))  AS PASTDATE,
+SUM(O.ORDERITEMQTY) AS QTYTOTAL,
+SUM(O.ORDERITEMUPRICE * O.ORDERITEMQTY)AS NETTOTAL,
+SUM(O.ORDERITEMQTY * O.ORDERITEMUPRICE +O.ORDERITEMTAX)AS GROSSTOTAL
+FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO 
+WHERE CAST(OT.ORDERDATE AS DATE) < CAST( (GETDATE()-(CONVERT(INT,'0'))) AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE) AND
+CAST(OT.ORDERDATE AS DATE) > CAST( (GETDATE()-(CONVERT(INT,'8'))) AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+GROUP BY CONVERT(VARCHAR(11),CONVERT(DATE,OT.ORDERDATE))
+
+
+");
+
+
+            cmdString = new SqlCommand(rQuery, cntString);
+
+            try
+            {
+                cntString.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmdString);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                report.aTable = ds.Tables[0];
+                report.bTable = ds.Tables[1];
+                report.cTable = ds.Tables[2];
+                report.dTable = ds.Tables[3];
+              
+
+            }
+
+            finally
+            {
+                cntString.Close();
+            }
+        }
+
+
+
+
+
+
+
+        // TODAY SALES BY CATEGORY
+        // SELECT
+        //SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY)AS NETTOTAL,
+        //SUM(O.ORDERITEMQTY * O.ORDERITEMUPRICE + O.ORDERITEMTAX)AS GRANDTOTAL,
+        //CONVERT(VARCHAR(11), CONVERT(DATE, OT.ORDERDATE))  AS ODATE,
+        // I.ITEMCATEGORY
+        // FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+        // JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO
+        // WHERE CAST(OT.ORDERDATE AS DATE) = CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+        //GROUP BY I.ITEMCATEGORY, CONVERT(VARCHAR(11),CONVERT(DATE, OT.ORDERDATE))
+
+
+        // PAST SALES BY CATEGORY
+        /* PAST TOTAL BY CATEGORY */
+        //        SELECT
+        //       SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY)AS NETTOTALSUM,
+        //      SUM(O.ORDERITEMQTY * O.ORDERITEMPRICE + O.ORDERITEMTAX)AS GTOTALSUM,
+        //       CONVERT(VARCHAR(11), CONVERT(DATE, OT.ORDERDATE))  AS ODATE,
+        //         I.ITEMCATEGORY
+        //         FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+        //         JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO
+        //         WHERE CAST(OT.ORDERDATE AS DATE) < CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+        //GROUP BY I.ITEMCATEGORY, CONVERT(VARCHAR(11),CONVERT(DATE, OT.ORDERDATE)) 
+
+        // TODAY TOTAL
+        //        SELECT
+        //SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY)AS NETTOTALSUM,
+        //SUM(O.ORDERITEMQTY * O.ORDERITEMUPRICE + O.ORDERITEMTAX)AS GTOTALSUM,
+        //CAST(GETDATE() AS DATE) AS TODAY
+        //FROM TBLORDERITEM O JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+        //JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO
+        //WHERE CAST(OT.ORDERDATE AS DATE) = CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+
+        // TODAY MOST POPULAR ITEM
+
+        //        SELECT
+        //C.ITEMNAME,
+        //SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY) AS NETTOTAL,
+        //SUM(O.ORDERITEMQTY * O.ORDERITEMPRICE + O.ORDERITEMTAX) AS GTOTAL,
+        //SUM(O.ORDERITEMQTY) AS QTY
+        //FROM TBLORDERITEM O
+        //JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+        //JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO
+        //JOIN TBLITEM C ON O.orderItemID= C.ITEMID
+
+        //WHERE CAST(OT.ORDERDATE AS DATE) = CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+        //GROUP BY C.ITEMNAME
+        //ORDER BY SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY) DESC
+
+        // MOST POPULAR ITEM BEFORE TODAY
+
+        /*PAST*/
+
+        //        SELECT
+        //       C.ITEMNAME,
+        //       SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY) AS NETTOTAL,
+        //      SUM(O.ORDERITEMQTY * O.ORDERITEMPRICE + O.ORDERITEMTAX) AS GTOTAL,
+        //      SUM(O.ORDERITEMQTY) AS QTY
+        //FROM TBLORDERITEM O
+        //JOIN TBLITEM I ON O.orderItemID = I.ITEMID
+        //JOIN TBLORDER OT ON O.ORDERID = OT.ORDERNO
+        //JOIN TBLITEM C ON O.orderItemID= C.ITEMID
+
+        //WHERE CAST(OT.ORDERDATE AS DATE) < CAST(GETDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' AS DATE)
+        //GROUP BY C.ITEMNAME
+        //ORDER BY SUM(O.ORDERITEMUPRICE* O.ORDERITEMQTY) DESC
+
 
 
 

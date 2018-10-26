@@ -14,7 +14,7 @@
 
 		<p style="text-align:right;"> Customer No :<asp:Label ID="cnumlbl" runat="server" Text="" Font-Size="Medium"></asp:Label> </p>
 
-				<table style="width:90%">
+				<table style="width:100%">
                 
 				<tr>        
                 <td><span style="color:hotpink">● </span> First Name</td>		
@@ -38,7 +38,9 @@
 
 				<tr>        
                 <td><span style="color:hotpink">● </span> Email </td>
-				<td><span style="color:hotpink;">● </span> Province</td>
+				<td><span style="color:hotpink;">● </span> Province
+                <asp:RequiredFieldValidator ID="ReqProvince" runat="server" ErrorMessage="&nbsp; Please select province. Choose N/A if not applicable &nbsp;"  ControlToValidate="provincelist" CssClass="ErrorMSG"></asp:RequiredFieldValidator>
+				</td>
 				</tr>
 
 				<tr>
@@ -72,10 +74,10 @@
 				</table>
 
 		     <br />
-             <asp:Button ID="btnUpdate" runat="server" Text="UPDATE" CssClass="RegisterBtn" OnClick="btnUpdate_Click" /> &nbsp;&nbsp;
+             <asp:Button ID="btnUpdate" runat="server" Text="UPDATE" CssClass="RegisterBtn" OnClick="btnUpdate_Click" CausesValidation="False" /> &nbsp;&nbsp;
 		     <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="RegisterBtn" OnClick="btnSave_Click" Visible="False"  /> &nbsp;&nbsp;
-             <asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="RegisterBtn" OnClientClick="javascript:window.close();" />&nbsp;&nbsp;
-		     <asp:Label ID="TEST" runat="server" Text="Label"></asp:Label>
+             <asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="RegisterBtn" OnClientClick="javascript:window.close();" CausesValidation="False"  />&nbsp;&nbsp;
+		     <asp:Label ID="TEST" runat="server" Text=""></asp:Label>
           
 
     </form>

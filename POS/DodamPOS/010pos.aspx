@@ -1,13 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pos.Master" AutoEventWireup="true" CodeBehind="010pos.aspx.cs" Inherits="DodamPOS._001pos" EnableViewState="true" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-	<h3>Point Of Sales</h3><hr />
-	<asp:Label ID="testlabel" runat="server" Text=""></asp:Label>
-	<br />
+<!-- TITLE MENU --> 
+	<table>
+	<tr>
+	<td style="width:200px;"><h3>Point Of Sales</h3></td>
+	</tr>
+	</table>
+	<hr />
 
-	
+<br />
+
+<!-- MAIN MENU : ITEM LIST SECTION (LEFT 40%) + CART LIST SECTION (RIGHT 50%) --> 
 <div style="width:95%;  display: flex; flex-wrap: wrap;">
 	
 <!-- ITEM LIST SECTION-->
@@ -16,22 +20,22 @@
 <!-- CATEGORY BUTTONS -->
 <div>	
 <asp:Button ID="CatAll" runat="server" ClientIDMode="Static" Text="All" CommandArgument="All" OnClick="SelectCat" CssClass="CatBtn" />
-<asp:Button ID="CatGarment" runat="server" ClientIDMode="Static" Text="Garment" CommandArgument="GARMENT" OnClick="SelectCat" CssClass="CatBtn" />
-<asp:Button ID="CatMagic" runat="server" ClientIDMode="Static" Text="Magic" CommandArgument="MAGIC" OnClick="SelectCat" CssClass="CatBtn" />
-<asp:Button ID="CatWeapon" runat="server" ClientIDMode="Static" Text="Weapon" CommandArgument="WEAPON" OnClick="SelectCat" CssClass="CatBtn" />
-<asp:Button ID="CatFood" runat="server" ClientIDMode="Static" Text="Food" CommandArgument="FOOD" OnClick="SelectCat" CssClass="CatBtn" />
-<asp:Button ID="CatArmor" runat="server" ClientIDMode="Static" Text="Armor" CommandArgument="ARMOR" OnClick="SelectCat" CssClass="CatBtn"  />
+<asp:Button ID="CatGarment" runat="server" ClientIDMode="Static" Text="MEAL" CommandArgument="MEAL" OnClick="SelectCat" CssClass="CatBtn" />
+<asp:Button ID="CatMagic" runat="server" ClientIDMode="Static" Text="SNACK" CommandArgument="SNACK" OnClick="SelectCat" CssClass="CatBtn" />
+<asp:Button ID="CatWeapon" runat="server" ClientIDMode="Static" Text="DRINK" CommandArgument="DRINK" OnClick="SelectCat" CssClass="CatBtn" />
+<asp:Button ID="CatFood" runat="server" ClientIDMode="Static" Text="BEAUTY" CommandArgument="BEAUTY" OnClick="SelectCat" CssClass="CatBtn" />
+<asp:Button ID="CatArmor" runat="server" ClientIDMode="Static" Text="ETC" CommandArgument="ETC" OnClick="SelectCat" CssClass="CatBtn"  />
 <asp:Label ID="CatSelect" runat="server" Text="All" Visible="false"  ></asp:Label>
 </div>
 <br />
 	
-<!-- ITEM DISPLAY -->
+<!-- ITEM IMAGE + PRICE + QTY DISPLAY -->
 <div>
 <asp:DataList ID="itemLists"  RepeatDirection="Vertical" RepeatColumns="4" runat="server" >
 
   <ItemTemplate>
 
-     <asp:Label ID="itemName" runat="server" Text='<%# Eval("Name") %>' Style="font-size:13px;  color:#faf8f2;" Width="120px" /><br />	  
+     <asp:Label ID="itemName" runat="server" Text='<%# Eval("Name") %>' Style="font-size:12px; color:#faf8f2;" Width="120px" height="20px" /><br />	  
 	 
 	 <asp:ImageButton ID="itemImage" runat="server" ImageUrl='<%# Eval("URL") %>' CommandArgument='<%# Eval("NO") %>' OnClick="SelectItem" Width="60px" Height="60px"  ValidateRequestMode="Inherit" CausesValidation="False" /> <br />
 	 
@@ -48,7 +52,7 @@
 	   
 </asp:DataList>
 </div>
-<br />	
+
 
 <!-- DATA PAGER -->
 	<table style="margin-right:auto; margin-left:auto;">
@@ -71,7 +75,7 @@
 
 <!-- SEARCH BOX & BUTTON -->
 
-Customer  <asp:Label ID="lblCustomerName" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"  CssClass="DisplayCustomerInfo"  Width="200px"></asp:Label>&nbsp;&nbsp;
+Customer  <asp:Label ID="lblCustomerName" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"  CssClass="DisplayCustomerInfo"  Width="270px"></asp:Label>&nbsp;&nbsp;
 No <asp:Label ID="lblCustomerNumber" runat="server" Text="-" CssClass="DisplayCustomerInfo" Width="40px"></asp:Label>
 
 <asp:Button ID="BtnSearch" runat="server" Text="GO"  CssClass="GoBtn"   OnClick="SearchCustomer" style="float:right;" /> 
@@ -88,7 +92,7 @@ No <asp:Label ID="lblCustomerNumber" runat="server" Text="-" CssClass="DisplayCu
 <hr /> <br />
 
 <!-- 2) CART TABLE DIV -->
-<div style="display: block;   overflow:auto;  height:52%">
+<div style="display: block;   overflow:auto;  height:50%">
 
 	<asp:GridView ID="GridView1"  runat ="server" OnRowDeleting="RowDelete" OnRowCreated = "RowCreate"   HeaderStyle-CssClass="ListHeader">
 		<Columns>
@@ -121,7 +125,6 @@ No <asp:Label ID="lblCustomerNumber" runat="server" Text="-" CssClass="DisplayCu
 </div>
 
 </div>
-<br />
 	
 	
 </div>

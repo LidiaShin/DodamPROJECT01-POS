@@ -88,6 +88,7 @@
     <Content Include="031customer_addnew.aspx" />
     <Content Include="032customer_seedetail.aspx" />
     <Content Include="040report.aspx" />
+    <Content Include="041report_today.aspx" />
     <Content Include="050aboutme.aspx" />
     <Content Include="999testpage.aspx" />
     <Content Include="img\flowerwall.jpg" />
@@ -184,6 +185,13 @@
     <Compile Include="040report.aspx.designer.cs">
       <DependentUpon>040report.aspx</DependentUpon>
     </Compile>
+    <Compile Include="041report_today.aspx.cs">
+      <DependentUpon>041report_today.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="041report_today.aspx.designer.cs">
+      <DependentUpon>041report_today.aspx</DependentUpon>
+    </Compile>
     <Compile Include="050aboutme.aspx.cs">
       <DependentUpon>050aboutme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,6 +209,7 @@
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="CsCustomer.cs" />
     <Compile Include="CsCustomerlist.cs" />
+    <Compile Include="CsDailyReport.cs" />
     <Compile Include="CsFilteredCustomerList.cs" />
     <Compile Include="CsFilteredItemList.cs" />
     <Compile Include="CsItem.cs" />

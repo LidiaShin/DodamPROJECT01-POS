@@ -67,6 +67,15 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.TextBox citybox;
         
         /// <summary>
+        /// ReqProvince control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqProvince;
+        
+        /// <summary>
         /// emailbox control.
         /// </summary>
         /// <remarks>

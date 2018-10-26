@@ -14,19 +14,16 @@
 
 		<p style="text-align:right;"> Item No :<asp:Label ID="inumlbl" runat="server" Text="" Font-Size="Medium"></asp:Label> </p>
       
-		<table style="width:90%">
+		<table style="width:100%">
 
 				<tr>        
                 <td><span style="color:hotpink">● </span> Item Category 
-				<!-- <asp:RequiredFieldValidator ID="ReqCate" runat="server" ErrorMessage="&nbsp; Please Choose Category &nbsp;" BackColor="#3B618D" ControlToValidate="CategoryList" ForeColor="#FFEEF7"></asp:RequiredFieldValidator> -->
-					
-					
+				<asp:RequiredFieldValidator ID="ReqProvince" runat="server" ErrorMessage="&nbsp; Please select category &nbsp;"   CssClass="ErrorMSG" ControlToValidate="CategoryList"></asp:RequiredFieldValidator>					
 				</td> 
 				
 				<td><span style="color:hotpink; margin-left:40px;">● </span> Purchase Price
-                <!--<asp:RequiredFieldValidator ID="ReqPprice" runat="server" ErrorMessage="&nbsp; Please enter purchase price &nbsp;" BackColor="#3B618D"  ForeColor="#FFEEF7" ControlToValidate="pPriceBox" Display="Dynamic"></asp:RequiredFieldValidator>
-				<!--<asp:RegularExpressionValidator ID="RegexPPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="pPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$"></asp:RegularExpressionValidator>
-				<!-- REGEX CONTROL 추가 FOR PURCHASE PRICE -->
+				<asp:RequiredFieldValidator ID="ReqPPrice" runat="server" ErrorMessage="Please enter purchase preice" ControlToValidate="pPriceBox" CssClass="ErrorMSG" Display="Dynamic" ></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegexPPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="pPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$" CssClass="ErrorMSG"></asp:RegularExpressionValidator>				
 				</td>
 				</tr>
 
@@ -43,10 +40,9 @@
 				<asp:RequiredFieldValidator ID="ReqIname" runat="server" ErrorMessage="&nbsp; Please enter Item name &nbsp;" BackColor="#3B618D"   ForeColor="#FFEEF7" ControlToValidate="iNameBox"  ></asp:RequiredFieldValidator>
 				</td>
 
-				<td><span style="color:hotpink; margin-left:40px;">● </span> Retail Price
-				<!--<asp:RequiredFieldValidator ID="ReqRprice" runat="server" ErrorMessage="&nbsp; Please enter retail price &nbsp;" BackColor="#3B618D"  ForeColor="#FFEEF7" Display="Dynamic" ControlToValidate="rPriceBox"></asp:RequiredFieldValidator>
-				<asp:RegularExpressionValidator ID="RegexRPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="rPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$"></asp:RegularExpressionValidator> 
-				<!-- REGEX CONTROL 추가 FOR RETAIL PRICE -->
+				<td><span style="color:hotpink; margin-left:40px;">● </span> Retail Price	
+				<asp:RequiredFieldValidator ID="ReqRPrice" runat="server" ErrorMessage="Please enter retail preice" ControlToValidate="rPriceBox" CssClass="ErrorMSG" Display="Dynamic" ></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegexRPrice"  runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="rPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$" CssClass="ErrorMSG"></asp:RegularExpressionValidator> 			
 				</td>
 				</tr>
 
@@ -56,7 +52,9 @@
                 </tr>
 
 			    <tr>        
-                <td><span style="color:hotpink">● </span> Item Quantity</td>
+                <td><span style="color:hotpink">● </span> Item Quantity
+				<asp:RequiredFieldValidator ID="ReqQty" runat="server" ErrorMessage="&nbsp; Please select quantity &nbsp;"     CssClass="ErrorMSG" ControlToValidate="qtyList"></asp:RequiredFieldValidator>
+                </td>
 				<td><span style="color:hotpink; margin-left:40px;">● </span> Image</td>
 				</tr>
 
@@ -68,7 +66,7 @@
 				
 					
 				<td> <asp:FileUpload ID="imageUpload" runat="server" Style="margin-left:40px; display:inline;" CssClass="CustomerInput" Width="180px" />
-					 <asp:Button ID="btnUpload" runat="server" Text="Upload"  Width="60px" style="margin-left:5px;" OnClick="btnUpload_Click" /> </td> 
+					 <asp:Button ID="btnUpload" runat="server" Text="Upload"  Width="60px" style="margin-left:5px;" OnClick="btnUpload_Click" CausesValidation="False" /> </td> 
                 </tr>
 
 				<tr>
@@ -87,9 +85,9 @@
 		</table>
 
 		 <br />
-             <asp:Button ID="btnUpdate" runat="server" Text="UPDATE" CssClass="RegisterBtn" OnClick="btnUpdate_Click" /> &nbsp;&nbsp;
+             <asp:Button ID="btnUpdate" runat="server" Text="UPDATE" CssClass="RegisterBtn" OnClick="btnUpdate_Click" CausesValidation="False" /> &nbsp;&nbsp;
 		     <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="RegisterBtn" Visible="False" OnClick="btnSave_Click"  /> &nbsp;&nbsp;
-             <asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="RegisterBtn" OnClientClick="javascript:window.close();" />&nbsp;&nbsp;
+             <asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="RegisterBtn" OnClientClick="javascript:window.close();" CausesValidation="False" />&nbsp;&nbsp;
 		     <asp:Label ID="imgURL" runat="server" Text="" Visible="false"></asp:Label>
           
 

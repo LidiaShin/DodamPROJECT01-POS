@@ -1,11 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pos.Master" AutoEventWireup="true" CodeBehind="020item.aspx.cs" Inherits="DodamPOS._002item" Theme="pos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<h3>Item List<asp:Button ID="BtnAddNewItem" runat="server" Text="ADD NEW" SkinID="BtnAddNewCustomer" OnClick="BtnAddNewItem_Click" /> </h3> <hr />
-	<asp:Label ID="testlabel" runat="server" Text=""></asp:Label>
-	<br /><br />
 
-	<asp:HiddenField ID="hdnText" runat="server" ClientIDMode="Static" Value="" /> 
+<!-- TITLE MENU --> 
+	<table>
+	<tr>
+	<td style="width:200px;"><h3>Item List</h3></td>
+	<td><asp:Button ID="BtnAddNewItem" runat="server" Text="ADD NEW" OnClick="BtnAddNewItem_Click" CssClass="AddNewBtn" /></td>  
+	</table>
+	<hr />
 
+<!-- ERROR MESSAGE DISPLAY --> 
+<asp:Label ID="testlabel" runat="server" Text=""></asp:Label> 
+	
+
+<br /><br />
+
+
+<!-- ITEM LIST BOARD --> 
 <div style="width:90%;">
 
 <asp:ListView ID="itemListBoard" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="OnPagePropertiesChanging" >

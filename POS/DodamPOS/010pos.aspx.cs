@@ -403,7 +403,7 @@ namespace DodamPOS
                     // PASS SESSION VALUE (ORDER NUMBER)
                     Session["ONUM"] = newOrder.OrderNumber;
                     Session["CNAME"] = lblCustomerName.Text;
-
+                    Session["CNUM"] = lblCustomerNumber.Text;
 
                     // EMPTY ITABLE
 
@@ -422,8 +422,9 @@ namespace DodamPOS
 
 
                     //SUCCESS MESSAGE 
-                            
+                    ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Order Confirmed');</script>");
                     ClientScript.RegisterStartupScript(this.Page.GetType(), "","window.open('012pos_seeOrderReceipt.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
+                    
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "refresh", "window.location.href=window.location;", true);
 
 
@@ -436,9 +437,7 @@ namespace DodamPOS
 
                 finally
                 {
-                    
-
-                    //Server.TransferRequest(Request.Url.AbsolutePath, false);
+     
                   
                 }
 

@@ -40,6 +40,24 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Label lblCName;
         
         /// <summary>
+        /// lblCNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCNum;
+        
+        /// <summary>
+        /// lblCEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCEmail;
+        
+        /// <summary>
         /// lblOrderDate control.
         /// </summary>
         /// <remarks>

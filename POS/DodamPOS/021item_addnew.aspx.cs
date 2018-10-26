@@ -32,17 +32,14 @@ namespace DodamPOS
                     CategoryList.DataTextField = ItemCat.itemCategory.Columns["categoryName"].ToString();
                     CategoryList.DataValueField = ItemCat.itemCategory.Columns["categoryCode"].ToString();
                     CategoryList.DataBind();
-                    //provincelist.DataSource = ProvinceList.Provinces;
-                    //provincelist.DataTextField = ProvinceList.Provinces.Columns["provinceName"].ToString();
-                    //provincelist.DataValueField = ProvinceList.Provinces.Columns["provinceCode"].ToString();
-                    //provincelist.DataBind();
+                   
                 }
                 finally
                 {
 
                 }
 
-                for (int i = 1; i <= 100; i++)
+                for (int i = 0; i <= 100; i++)
                 {
                     qtyList.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 }

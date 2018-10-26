@@ -10,60 +10,51 @@
 namespace DodamPOS {
     
     
-    public partial class _002item {
+    public partial class _041report_today {
         
         /// <summary>
-        /// BtnAddNewItem control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAddNewItem;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// testlabel control.
+        /// ReportA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label testlabel;
+        protected global::System.Web.UI.WebControls.GridView ReportA;
         
         /// <summary>
-        /// itemListBoard control.
+        /// ReportB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView itemListBoard;
+        protected global::System.Web.UI.WebControls.GridView ReportB;
         
         /// <summary>
-        /// searchKeyWordList control.
+        /// ReportC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList searchKeyWordList;
+        protected global::System.Web.UI.WebControls.GridView ReportC;
         
         /// <summary>
-        /// keywordbox control.
+        /// ReportD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox keywordbox;
-        
-        /// <summary>
-        /// BtnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSearch;
+        protected global::System.Web.UI.WebControls.GridView ReportD;
     }
 }

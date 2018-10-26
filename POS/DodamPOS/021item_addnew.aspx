@@ -16,14 +16,14 @@
                 
 				<tr>        
                 <td><span style="color:hotpink">● </span> Item Category 
-				<asp:RequiredFieldValidator ID="ReqCate" runat="server" ErrorMessage="&nbsp; Please Choose Category &nbsp;" BackColor="#3B618D" ControlToValidate="CategoryList" ForeColor="#FFEEF7"></asp:RequiredFieldValidator> 
+				<asp:RequiredFieldValidator ID="ReqCate" runat="server" ErrorMessage="&nbsp; Please Choose Category &nbsp;"  ControlToValidate="CategoryList"  CssClass="ErrorMSG"></asp:RequiredFieldValidator> 
 					
 					
 				</td> 
 				
 				<td><span style="color:hotpink; margin-left:40px;">● </span> Purchase Price
-                <asp:RequiredFieldValidator ID="ReqPprice" runat="server" ErrorMessage="&nbsp; Please enter purchase price &nbsp;" BackColor="#3B618D"  ForeColor="#FFEEF7" ControlToValidate="pPriceBox" Display="Dynamic"></asp:RequiredFieldValidator>
-				<asp:RegularExpressionValidator ID="RegexPPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="pPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="ReqPprice" runat="server" ErrorMessage="&nbsp; Please enter purchase price &nbsp;" CssClass="ErrorMSG" ControlToValidate="pPriceBox" Display="Dynamic"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegexPPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="pPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$" CssClass="ErrorMSG" ></asp:RegularExpressionValidator>
 				<!-- REGEX CONTROL 추가 FOR PURCHASE PRICE -->
 				</td>
 				</tr>
@@ -38,12 +38,12 @@
 
 				<tr>        
                 <td><span style="color:hotpink">● </span> Item Name
-				<asp:RequiredFieldValidator ID="ReqIname" runat="server" ErrorMessage="&nbsp; Please enter Item name &nbsp;" BackColor="#3B618D"   ForeColor="#FFEEF7" ControlToValidate="iNameBox"  ></asp:RequiredFieldValidator>
+				<asp:RequiredFieldValidator ID="ReqIname" runat="server" ErrorMessage="&nbsp; Please enter Item name &nbsp;"  ControlToValidate="iNameBox" CssClass="ErrorMSG" ></asp:RequiredFieldValidator>
 				</td>
 
 				<td><span style="color:hotpink; margin-left:40px;">● </span> Retail Price
-				<asp:RequiredFieldValidator ID="ReqRprice" runat="server" ErrorMessage="&nbsp; Please enter retail price &nbsp;" BackColor="#3B618D"  ForeColor="#FFEEF7" Display="Dynamic" ControlToValidate="rPriceBox"></asp:RequiredFieldValidator>
-				<asp:RegularExpressionValidator ID="RegexRPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " ControlToValidate="rPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$"></asp:RegularExpressionValidator> 
+				<asp:RequiredFieldValidator ID="ReqRprice" runat="server" ErrorMessage="&nbsp; Please enter retail price &nbsp;" CssClass="ErrorMSG"  Display="Dynamic" ControlToValidate="rPriceBox"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegexRPrice" runat="server" ErrorMessage="&nbsp; Please enter valid number (decimal 2) " CssClass="ErrorMSG" ControlToValidate="rPriceBox" Display="Dynamic" ValidationExpression="((\d+)((\.\d{1,2})?))$"></asp:RegularExpressionValidator> 
 				<!-- REGEX CONTROL 추가 FOR RETAIL PRICE -->
 				</td>
 				</tr>
@@ -83,7 +83,7 @@
 			    </tr>
 		        
 			    <tr>
-				<td><asp:TextBox ID="notebox" runat="server" CssClass="CustomerInput" TextMode="MultiLine" Height="90px" Width="300px"></asp:TextBox></td>
+				<td><asp:TextBox ID="notebox" runat="server" CssClass="CustomerInput" TextMode="MultiLine" Height="90px" Width="300px" MaxLength="2000"></asp:TextBox></td>
 				
 				<td>
 					<asp:Image ID="testimg" runat="server" Height="90px" Width="200px" Style="margin-left:40px; border:none;" BorderStyle="None" BorderWidth="0px" />

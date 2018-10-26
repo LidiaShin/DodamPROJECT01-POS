@@ -31,22 +31,22 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.Label inumlbl;
         
         /// <summary>
-        /// ReqCate control.
+        /// ReqProvince control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqProvince;
         
         /// <summary>
-        /// ReqPprice control.
+        /// ReqPPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPprice;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPPrice;
         
         /// <summary>
         /// RegexPPrice control.
@@ -85,13 +85,13 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqIname;
         
         /// <summary>
-        /// ReqRprice control.
+        /// ReqRPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqRprice;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqRPrice;
         
         /// <summary>
         /// RegexRPrice control.
@@ -119,6 +119,15 @@ namespace DodamPOS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox rPriceBox;
+        
+        /// <summary>
+        /// ReqQty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqQty;
         
         /// <summary>
         /// qtyList control.

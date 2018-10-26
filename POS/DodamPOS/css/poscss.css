@@ -60,7 +60,7 @@ body {
 	padding: 60px;
 }
 
-/*Login Container*/
+/*LOGIN PAGE*/
 
 .container {
 	/*background: rgba(120, 144, 156, 0.55);*/
@@ -144,8 +144,8 @@ body {
 		
 		background-color: #c8a2ac;
 	}
-/*Master Page Start Here*/
 
+/*MASTER PAGE*/
 
 .mainwall {
 	position: fixed;
@@ -335,9 +335,28 @@ label[for="nav-trigger"] {
 */
 
 
+/*020,030,040,050 GENERAL COMPONENT*/
 
+.AddNewBtn {
+	vertical-align: bottom;
+	margin-top: -6px;
+	outline: 0;
+	border: 0;
+	padding: 5px 10px;
+	
+	color: #515154;
+	background-color: #f3e6f4;
+	border-radius: 2px;
+	width: 100px;
+	font-size: 14px;
+	transition-duration: 0.25s;
+	cursor: pointer;
+}
 
-
+.ErrorMSG {
+background-color:white;
+color:orangered;
+}
 
 
 
@@ -568,10 +587,11 @@ label[for="nav-trigger"] {
 	background-color: rgba(255, 255, 255, 0.2);
 	
 	border-radius: 3px;	
-	text-align: center;
-	font-size: 24px;
+	
+	font-size: 15px;
+	height:24px;
 	color: white;
-	font-weight:700;
+	font-weight:600;
 	margin-bottom:3px;
 }
 

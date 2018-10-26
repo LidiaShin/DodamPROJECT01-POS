@@ -81,7 +81,7 @@ namespace DodamPOS
             }
             catch
             {
-                testlabel.Text = "error";
+                testlabel.Text = "Error Occured, Please try reloading page. Sorry for inconvenience";
             }
 
             finally
@@ -96,27 +96,7 @@ namespace DodamPOS
         {
             (itemListBoard.FindControl("DataPager1") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
 
-            //ItemListView();
-            //if (hdnText.Value != "")
-            //{
-            //    string yourValue = hdnText.Value.ToString();
-            //    if (yourValue == "Ddddddd")
-
-            //    {
-            //        //CustomerListView();
-            //        SearchListView();
-            //    }
-            //    else
-            //    {
-            //        //this.CustomerListView();
-            //        SearchListView();
-            //    }
-            //}
-            //else
-            //{
-            //this.CustomerListView();
-
-            //}
+           
 
             if (Convert.ToString(searchKeyWordList.SelectedValue) == "Name")
             {
