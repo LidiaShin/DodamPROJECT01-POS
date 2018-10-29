@@ -51,12 +51,12 @@ namespace DodamPOS
         const int maxImageSize = 307200;
 
 
-        // BLOB 에 이미지 업로드 
+        // IMAGE UPLOAD TO BLOB
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             var blobName = imageUpload.FileName;
 
-            // 300k보다 작고 이미지라면
+            // LIMIT FILE SIZE + FILE TYPE
             if (imageUpload.PostedFile.ContentLength < maxImageSize &&
                 (imageUpload.PostedFile.ContentType == "image/x-png" ||
                 imageUpload.PostedFile.ContentType == "image/pjpeg" ||
@@ -66,15 +66,15 @@ namespace DodamPOS
                 imageUpload.PostedFile.ContentType == "image/gif")
                 ) {
 
-                // azure 에 업로드 한다면 (=appsetting 이 true 라면)
+                // APP SETTING TRUE/FALSE
                 if (Convert.ToBoolean(ConfigurationManager.AppSettings["useazureblob"].ToString()))
                 {
-                    // azure 에 업로드하기 위한 정보 (액세스키 + 컨테이너 네임)
+                    // AZURE BLOB ACCESSKEY + CONTAINER NAME
                     string accesskey = ConfigurationManager.AppSettings["azurekey"].ToString();
                     string containerName = "dodamimg".ToLower();
 
 
-                    // 컨테이너가 없으면 생성
+                    // IF NO CONTAINER, CREATE IT!
                     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(accesskey);
 
                     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -87,7 +87,7 @@ namespace DodamPOS
                         new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
 
-                    // 업로드 (드디어..)
+                    // UPLOAD...
 
                     CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
 
@@ -100,14 +100,14 @@ namespace DodamPOS
                     this.imgurl.Text= $"https://dodamblob.blob.core.windows.net/dodamimg/{blobName}";
                 }
 
-                //local 에 업로드 (appsetting 이 false)
+                //IF APPSETTING IS FALSE, UPLOAD TO LOCAL..
                 else
                 {
 
                 }
             }
 
-            // 사이즈 OK, 파일타입이 이미지가 아니면
+            // FILETYPE CHECK
             else if(imageUpload.PostedFile.ContentLength < maxImageSize &&
                 (imageUpload.PostedFile.ContentType != "image/x-png" ||
                 imageUpload.PostedFile.ContentType != "image/pjpeg" ||
@@ -151,7 +151,7 @@ namespace DodamPOS
         string itemdate { get; set; }
 
 
-        //DB에 업로드 (이미지 URL)
+        // IMAGE URL UPLOAD TO DB
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             //itemcat = CategoryList.SelectedValue.ToString();

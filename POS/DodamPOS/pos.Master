@@ -5,7 +5,7 @@
 <html>
 <head runat="server">
 
-    <title>Welcome to Dodam POS System >_<</title>
+    <title> Dodam's mini project </title>
 	<link href="css/poscss.css" rel="stylesheet" type="text/css" />
 	
 

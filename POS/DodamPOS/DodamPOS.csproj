@@ -107,8 +107,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WebForm1.aspx" />
-    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="000home.aspx.cs">
@@ -240,11 +238,6 @@
     <Compile Include="dodam.aspx.designer.cs">
       <DependentUpon>dodam.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LINQforREPORT.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LINQforREPORT.dbml</DependentUpon>
-    </Compile>
     <Compile Include="main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -286,30 +279,8 @@
     <Compile Include="testpage992.aspx.designer.cs">
       <DependentUpon>testpage992.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LINQforREPORT.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>LINQforREPORT.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="LINQforREPORT.dbml.layout">
-      <DependentUpon>LINQforREPORT.dbml</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <Content Include="mainmaster.Master" />
     <Content Include="pos.Master" />
