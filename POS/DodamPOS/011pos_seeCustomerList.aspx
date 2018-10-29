@@ -12,9 +12,17 @@
     <form id="form1" runat="server">
 
 
-
-<h2>Select Customer</h2><hr /><br />
-<div style="height:200px; overflow:auto;">
+<table>
+	<tr>
+	<td style="width:150px;"><h2>Select Customer</h2></td>
+	<td style="width:240px; color:aqua" > Please click name to select </td>
+	</tr>
+	</table>
+	<hr />
+		
+		
+		<br />
+<div style="height:300px; overflow:auto;">
 
     <table style="width:100%; border-collapse: collapse; border-spacing: 0; text-align:left; position:center; ">   
 	   <tr style="font-size:20px;" class="ListHeader">
@@ -37,7 +45,7 @@
 	<td style="width:60px; text-align:center;"><asp:Label ID="lblCustomerID" runat="server" Text='<%# Eval("NO") %>' /></td>
     
 	<td style="text-align:left; width:240px "><asp:LinkButton ID="lkCustomerName" runat="server" Text ='<%# Eval("NAME") %>' CommandArgument='<%# Eval("NAME")+ ";" +Eval("NO")%>' Font-Overline="false" ForeColor="White"  
-		onmouseover="this.style.color='red'" onmouseout="this.style.color='white'" OnClick="SelectName"  /></td>
+		onmouseover="this.style.color='pink'" onmouseout="this.style.color='white'" OnClick="SelectName"  /></td>
 
     <td style="width:240px; text-align:left; "><asp:Label ID="lblCustomerEmail" runat="server" Text ='<%# Eval("E-MAIL") %>' /></td>
     

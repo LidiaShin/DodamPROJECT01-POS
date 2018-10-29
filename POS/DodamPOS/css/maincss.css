@@ -78,17 +78,7 @@ body {
 	text-align: center;
 	overflow: hidden;
 }
-/*
-.container {
-	max-width: 400px;
-	margin: 0 auto;
-	margin: 10px auto;
-	padding: 30px 0;
-	height: 400px;
-	
-	text-align: center;
-}
-	*/
+
 
 	.container h1 {
 		font-size: 30px;
@@ -241,25 +231,7 @@ label[for="nav-trigger"] {
 	box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
 }
 
-/*
 
-
-.nav-trigger + #nav-item-top, .site-wrap {
-	transition: top 0.5s;
-}
-
-.nav-trigger:checked + #nav-item-top {
-	left: 140px;
-}
-
-
-.nav-trigger:checked ~ .site-wrap {
-	left: 140px;
-	box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
-}
-
-	*/
-/* 01 pos menu test */
 
 
 
@@ -282,44 +254,32 @@ label[for="nav-trigger"] {
 	background: linear-gradient(to bottom right, #1c1c4e 0%, #9393b7 100%);
 }
 
-/*
-.nav-bar {
-	background: rgba(120, 144, 156, 0.55);
-	background: #d4d4e2;
-	opacity: 0.3;
-	background: linear-gradient(top left, #d4d4e2 0%, #ffffff 100%);
-	background: linear-gradient(to bottom right, #d4d4e2 0%, #ffffff 100%);
-
-
-	
-
-	border: 2px solid red;
-    border-radius:5px;
-
-    width:20%;
-	height:80%;
-    padding:5px;
-    display:inline-block;
-	margin:40px;
-
-
-
-	overflow: hidden;
+.mainul {
+	list-style: none;
+	margin-left: 20px;
+	line-height: 2;
 }
 
-.main {
-	background: rgba(120, 144, 156, 0.55);
-	background: #d4d4e2;
-	opacity: 0.3;
-	background: linear-gradient(top left, #d4d4e2 0%, #ffffff 100%);
-	background: linear-gradient(to bottom right, #d4d4e2 0%, #ffffff 100%);
-	border: 2px solid red;
-	border-radius: 5px;
-	width: 65%;
-	height: 80%;
-	padding: 5px;
-	display: inline-block;
-	margin: 40px;
-	overflow: hidden;
+.mainli {
+	color: white;
+	font-size: 16px;
 }
-*/
+
+.sub {
+	font-weight: 700;
+	font-size: 18px;
+	color: #cbbed5;
+}
+
+.CloseBtn {
+	outline: 0;
+	background-color: #99E9DB;
+	border: 0;
+	padding: 5px 10px;
+	color: #1E2E2B;
+	border-radius: 2px;
+	width: 100px;
+	cursor: pointer;
+	font-size: 14px;
+	transition-duration: 0.25s;
+}

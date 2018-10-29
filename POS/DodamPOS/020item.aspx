@@ -1,11 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pos.Master" AutoEventWireup="true" CodeBehind="020item.aspx.cs" Inherits="DodamPOS._002item" Theme="pos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pos.Master" AutoEventWireup="true" CodeBehind="020item.aspx.cs" Inherits="DodamPOS._002item" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <!-- TITLE MENU --> 
 	<table>
 	<tr>
-	<td style="width:200px;"><h3>Item List</h3></td>
-	<td><asp:Button ID="BtnAddNewItem" runat="server" Text="ADD NEW" OnClick="BtnAddNewItem_Click" CssClass="AddNewBtn" /></td>  
+	<td style="width:180px;"><h3>Item List</h3></td>
+	<td style="width:280px; color:antiquewhite"> Please click name to see or update detail </td>
+	<td><asp:Button ID="BtnAddNewItem" runat="server" Text="ADD NEW" OnClick="BtnAddNewItem_Click" CssClass="AddNewBtn" /></td>
+	 </tr>
 	</table>
 	<hr />
 
@@ -22,6 +24,7 @@
 <asp:ListView ID="itemListBoard" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="OnPagePropertiesChanging" >
 
 	   <LayoutTemplate>
+
 	   <table style="width:100%; border-collapse: collapse; border-spacing: 0; text-align:left; position:center; ">
        
 	   <tr class="ListHeader">
@@ -61,7 +64,7 @@
             <tr><asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder></tr>
             </GroupTemplate>
 
-		   <ItemTemplate>
+<ItemTemplate>
 
 		   <tr style="font-size:14px; text-align:center;" onmouseover="this.style.backgroundColor='rgba(184,191,209, 0.6)'" onmouseout="this.style.backgroundColor=''">
 	
@@ -72,7 +75,7 @@
 
 
 		   <td style="text-align:left;"><asp:LinkButton ID="lkItemName" runat="server" Text ='<%# Eval("NAME") %>' CommandArgument='<%# Eval("NO") %>' Font-Overline="false" ForeColor="White"  
-		    onmouseover="this.style.color='red'" onmouseout="this.style.color='white'" OnClick ="SeeItemDetail"/></td>
+		    onmouseover="this.style.color='pink'" onmouseout="this.style.color='white'" OnClick ="SeeItemDetail"/></td>
            
 
 		   <td><asp:Label ID="lblItemPPrice" runat="server" Text='<%# Eval("PurchasePrice") %>' /></td>
@@ -81,8 +84,8 @@
            <td><asp:Label ID="lblItemRDay" runat="server" Text=' <%# Eval("REGISTER DATE") %>' /></td>
            </tr>
 
-		   </ItemTemplate>
-    </asp:ListView>
+</ItemTemplate>
+</asp:ListView>
 </div>
 
 

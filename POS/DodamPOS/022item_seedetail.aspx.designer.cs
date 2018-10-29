@@ -85,6 +85,15 @@ namespace DodamPOS {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqIname;
         
         /// <summary>
+        /// RegexName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegexName;
+        
+        /// <summary>
         /// ReqRPrice control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace DodamPOS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpload;
+        
+        /// <summary>
+        /// RegNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegNote;
         
         /// <summary>
         /// notebox control.

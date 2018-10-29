@@ -18,9 +18,13 @@
                 
 				<tr>        
                 <td><span style="color:hotpink">● </span> First Name 
-				<asp:RequiredFieldValidator ID="ReqFname" runat="server" ErrorMessage="&nbsp; Please enter first name &nbsp;"  ControlToValidate="fnamebox" CssClass="ErrorMSG" ></asp:RequiredFieldValidator></td> 
+				<asp:RequiredFieldValidator ID="ReqFname" runat="server"  ErrorMessage="&nbsp; Please enter first name"  ControlToValidate="fnamebox" CssClass="ErrorMSG" Display="Dynamic"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegFname" runat="server" ErrorMessage="Up to 30 characters,please"  ControlToValidate="fnamebox" CssClass="ErrorMSG" Display="Dynamic" ValidationExpression="^.{1,30}$" ></asp:RegularExpressionValidator>
+				</td> 
+
 				<td><span style="color:hotpink; margin-left:20px;">● </span> Address
-                <asp:RequiredFieldValidator ID="ReqAddress" runat="server" ErrorMessage="&nbsp; Please enter address &nbsp;"  ControlToValidate="addressbox" CssClass="ErrorMSG"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="ReqAddress" runat="server" ErrorMessage="&nbsp; Please enter address &nbsp;"  ControlToValidate="addressbox" CssClass="ErrorMSG" Display="Dynamic" ></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegAddress" runat="server" ErrorMessage="Up to 40 Characters,please" ControlToValidate="addressbox" CssClass="ErrorMSG" Display="Dynamic" ValidationExpression="^.{1,40}$" ></asp:RegularExpressionValidator>
 				</td>
 				</tr>
 
@@ -31,9 +35,13 @@
 
 				<tr>        
                 <td><span style="color:hotpink">● </span> Last Name
-				<asp:RequiredFieldValidator ID="ReqLname" runat="server" ErrorMessage="&nbsp; Please enter last name &nbsp;" CssClass="ErrorMSG" ControlToValidate="lnamebox"  ></asp:RequiredFieldValidator></td>
+				<asp:RequiredFieldValidator ID="ReqLname" runat="server" ErrorMessage="&nbsp; Please enter last name &nbsp;" CssClass="ErrorMSG" ControlToValidate="lnamebox" Display="Dynamic"  ></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegLname" runat="server" ErrorMessage="Up to 20 Characters,please" ControlToValidate="lnamebox" CssClass="ErrorMSG" Display="Dynamic" ValidationExpression="^.{1,20}$" ></asp:RegularExpressionValidator>
+                </td>
+
 				<td><span style="color:hotpink; margin-left:20px;">● </span> City
-				<asp:RequiredFieldValidator ID="ReqCity" runat="server" ErrorMessage="&nbsp; Please enter city &nbsp;" CssClass="ErrorMSG" ControlToValidate="citybox"></asp:RequiredFieldValidator>
+				<asp:RequiredFieldValidator ID="ReqCity" runat="server" ErrorMessage="&nbsp; Please enter city &nbsp;" CssClass="ErrorMSG" ControlToValidate="citybox" Display="Dynamic"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="Regcity" runat="server" ErrorMessage="Up to 20 Characters,please" ControlToValidate="citybox" CssClass="ErrorMSG" Display="Dynamic" ValidationExpression="^.{1,20}$" ></asp:RegularExpressionValidator>
 				</td>
 				</tr>
 
@@ -46,6 +54,7 @@
                 <td><span style="color:hotpink">● </span> Email 
 				<asp:RequiredFieldValidator ID="ReqEmail" runat="server" ErrorMessage="&nbsp; Please enter email &nbsp;" CssClass="ErrorMSG"  Display="Dynamic" ControlToValidate="emailbox"></asp:RequiredFieldValidator>
 				<asp:RegularExpressionValidator ID="RegexEmail" runat="server" ErrorMessage="&nbsp; Please enter valid email &nbsp;" ControlToValidate="emailbox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="ErrorMSG" Display="Dynamic"></asp:RegularExpressionValidator></td>
+				
 				<td><span style="color:hotpink; margin-left:20px;">● </span> Province 
 				<asp:RequiredFieldValidator ID="ReqProvince" runat="server" ErrorMessage="&nbsp; Please select province.Choose N/A if not in the list" CssClass="ErrorMSG" ControlToValidate="provincelist"></asp:RequiredFieldValidator>
 				</td>
@@ -76,7 +85,9 @@
                 </tr>
 
 				<tr>
-				<td><span style="color:azure">● </span> Note</td>
+				<td><span style="color:azure">● </span> Note
+				<asp:RegularExpressionValidator ID="Regnote" runat="server" ErrorMessage="Up to 100 Characters,please" ControlToValidate="notebox" CssClass="ErrorMSG" Display="Dynamic" ValidationExpression="^.{1,100}$" ></asp:RegularExpressionValidator>
+				</td>
 				</tr>
 
 				
@@ -89,7 +100,7 @@
 
 		     <br />
              <asp:Button ID="btnSubmit" runat="server" Text="SUBMIT" CssClass="RegisterBtn" OnClick="btnSubmit_Click" /> &nbsp;&nbsp;
-             <asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="RegisterBtn" OnClientClick="javascript:window.close();" />
+             <asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="CloseBtn" OnClientClick="javascript:window.close();" />
           
 		
     </form>

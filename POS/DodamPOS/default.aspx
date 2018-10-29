@@ -15,15 +15,17 @@
 
  
 
-  <h1>Dodam's POS System</h1> <hr />
+  <h1>Dodam Mini Project 1</h1> <hr />
   
   <table id="loginform">
   <tr> 
   <td><asp:TextBox ID="uname" runat="server" placeholder="UserName" CssClass="loginInput" ></asp:TextBox> </td>
+  <td>admin6507</td>
   </tr>
 
   <tr>
   <td><asp:TextBox ID="pword" runat="server" placeholder="Password"  CssClass="loginInput" TextMode="Password"></asp:TextBox> </td>
+  <td>650717</td>
   </tr>
 
   <tr>

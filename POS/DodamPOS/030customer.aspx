@@ -1,10 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pos.Master" AutoEventWireup="true" CodeBehind="030customer.aspx.cs" Inherits="DodamPOS._003customer" Theme="pos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pos.Master" AutoEventWireup="true" CodeBehind="030customer.aspx.cs" Inherits="DodamPOS._003customer"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <!-- TITLE MENU --> 
     <table>
     <tr>
-    <td style="width:200px;"><h3>Customer List</h3></td>
+    <td style="width:180px;"><h3>Customer List</h3></td>
+	<td style="width:280px; color:antiquewhite"> Please click name to see or update detail </td>
     <td><asp:Button ID="BtnAddnew" runat="server" Text="ADD NEW" OnClick="BtnAddnew_Click" CssClass="AddNewBtn" /></td>
     </tr>
     </table>
@@ -79,7 +80,7 @@
     <td><asp:Label ID="lblCustomerID" runat="server" Text='<%# Eval("NO") %>' /></td>
 
     <td style="text-align:left;"><asp:LinkButton ID="lkCustomerName" runat="server" Text ='<%# Eval("NAME") %>' CommandArgument='<%# Eval("NO") %>' Font-Overline="false" ForeColor="White"  
-		onmouseover="this.style.color='red'" onmouseout="this.style.color='white'" OnClick ="SeeDetail"/></td>
+		onmouseover="this.style.color='pink'" onmouseout="this.style.color='white'" OnClick ="SeeDetail"/></td>
 
     <td style="text-align:left;"><asp:Label ID="lblCustomerEmail" runat="server" Text ='<%# Eval("E-MAIL") %>' /></td>
     <td><asp:Label ID="lblCity" runat="server" Text='<%# Eval("CITY") %>' /></td>

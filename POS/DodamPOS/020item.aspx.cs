@@ -14,11 +14,8 @@ namespace DodamPOS
         {
             if (!IsPostBack)
             {
-                //Add New Item 버튼 색상변화
-                BtnAddNewItem.Attributes.Add("onmouseover", "this.style.backgroundColor='#c1eec8'");
-                BtnAddNewItem.Attributes.Add("onmouseout", "this.style.backgroundColor='#f3e6f4'");
-
-                // 검색필터
+               
+                // SEARCH DDL
                 List<string> searchKeywords = new List<string>();
                 searchKeywords.Add("Name");
                 searchKeywords.Add("Note");
@@ -28,19 +25,19 @@ namespace DodamPOS
 
 
 
-                // Display 아이템리스트 게시판 
+                // DISPLAY WHOLE ITEM LIST
                 ItemListView();
             }
         }
 
-        // Add 버튼 클릭시 아이템 등록창 open
+        // PRESS ADD NEW ITEM
         protected void BtnAddNewItem_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(this.Page.GetType(), "",
 "window.open('021item_addnew.aspx','window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,height=350,width=700,left=130,top=220');", true);
         }
 
-        // 리스트의 item 이름 클릭시 detail 창 open
+        // CLICK ITEM NAME TO SEE DETAIL
 
         protected void SeeItemDetail(object sender, EventArgs e)
         {
@@ -67,7 +64,7 @@ namespace DodamPOS
 
 
 
-        // 전체 아이템 리스트 보는 메소드
+        // SEE WHOLE ITEM LIST METHOD
         DataTable itemTable { get; set; }
         public void ItemListView()
         {
@@ -116,28 +113,30 @@ namespace DodamPOS
             
         }
 
-        // 검색버튼 (SEARCH)눌렀을때 
+        // PRESS SEACH BUTTON
         protected void BtnSearch_Click(object sender, EventArgs e)
         {
+            // SEARCH BY NAME
+
             if (Convert.ToString(searchKeyWordList.SelectedValue) == "Name")
             {
                 SearchByName();
             }
 
-            //노트내용으로 검색시
+            // SEARCH BY NOTE
             else if (Convert.ToString(searchKeyWordList.SelectedValue) == "Note")
             {
                 SearchByNote();
             }
 
-            // 그외 ( 필터가 선택되지 않았거나 검색창 비어있을때 )
+            // DDL IS NOT SELECTED
             else
             {
                 ItemListView();
             }
         }
 
-        // 검색메소드
+        // SEARCH KEYWORD
         string kItemName { get; set; }
         string kItemNote { get; set; }
         public void SearchByName()
@@ -160,7 +159,7 @@ namespace DodamPOS
 
             catch
             {
-                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('error');</script>");
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Sorry, Connection is not stable. Please try again');</script>");
             }
 
             finally
@@ -190,7 +189,7 @@ namespace DodamPOS
 
             catch
             {
-                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('error');</script>");
+                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Sorry, Connection is not stable. Please try again');</script>");
             }
 
             finally

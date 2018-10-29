@@ -89,16 +89,19 @@
     <Content Include="032customer_seedetail.aspx" />
     <Content Include="040report.aspx" />
     <Content Include="041report_today.aspx" />
+    <Content Include="042report_orderdetail.aspx" />
     <Content Include="050aboutme.aspx" />
     <Content Include="999testpage.aspx" />
+    <Content Include="dodam.aspx" />
     <Content Include="img\flowerwall.jpg" />
+    <Content Include="img\POS.jpeg" />
+    <Content Include="img\snowcat.png" />
     <Content Include="js\posjs.js" />
     <Content Include="main.aspx" />
     <Content Include="css\poscss.css" />
     <Content Include="css\maincss.css" />
     <Content Include="default.aspx" />
     <Content Include="img\menu-icon.png" />
-    <Content Include="img\menu.png" />
     <Content Include="img\menuicon.png" />
     <Content Include="testpage992.aspx" />
     <Content Include="Web.config">
@@ -192,6 +195,13 @@
     <Compile Include="041report_today.aspx.designer.cs">
       <DependentUpon>041report_today.aspx</DependentUpon>
     </Compile>
+    <Compile Include="042report_orderdetail.aspx.cs">
+      <DependentUpon>042report_orderdetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="042report_orderdetail.aspx.designer.cs">
+      <DependentUpon>042report_orderdetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="050aboutme.aspx.cs">
       <DependentUpon>050aboutme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,14 +222,24 @@
     <Compile Include="CsDailyReport.cs" />
     <Compile Include="CsFilteredCustomerList.cs" />
     <Compile Include="CsFilteredItemList.cs" />
+    <Compile Include="CsInvoice.cs" />
     <Compile Include="CsItem.cs" />
     <Compile Include="CsItemCat.cs" />
     <Compile Include="CsItemlist.cs" />
     <Compile Include="CsOrder.cs" />
     <Compile Include="CsProvincelist.cs" />
     <Compile Include="CsReceipt.cs" />
+    <Compile Include="CsReceiptInfo.cs" />
     <Compile Include="CsRegisterEmail.cs" />
+    <Compile Include="CsSearchInvoice.cs" />
     <Compile Include="CsUserlist.cs" />
+    <Compile Include="dodam.aspx.cs">
+      <DependentUpon>dodam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dodam.aspx.designer.cs">
+      <DependentUpon>dodam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LINQforREPORT.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -282,7 +302,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Themes\pos\pos.skin" />
     <Content Include="LINQforREPORT.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>LINQforREPORT.designer.cs</LastGenOutput>
@@ -306,7 +325,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Themes\pos\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

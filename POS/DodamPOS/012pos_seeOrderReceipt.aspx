@@ -88,9 +88,9 @@ Date: <asp:Label ID="lblOrderDate" runat="server" Text="DATE" ></asp:Label>
 <div style="display: block; width:100%; padding-right:20px;">
 <table>
 <tr>
-<td><asp:Button ID="btnPrint" runat="server" Text="PRINT OUT" CssClass="RegisterBtn"   BackColor="#FF9966"  OnClientClick="PrintReceipt('header','receipt','total');" value=" Print"/> </td>
-<td><asp:Button ID="btnEmail" runat="server" Text="SEND EMAIL" CssClass="RegisterBtn" OnClick="btnEmail_Click"   /> </td>
-<td><asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="RegisterBtn" OnClientClick="javascript:window.close();" /></td>
+<td><asp:Button ID="btnPrint" runat="server" Text="PRINT OUT" CssClass="ReceiptBtn"   OnClientClick="PrintReceipt('header','receipt','total');" value=" Print"/> </td>
+<td><asp:Button ID="btnEmail" runat="server" Text="SEND EMAIL" CssClass="ReceiptBtn " OnClick="btnEmail_Click"   /> </td>
+<td><asp:Button ID="btnClose" runat="server" Text="CLOSE" CssClass="CloseBtn" OnClientClick="javascript:window.close();" /></td>
 </tr>
 </table>
 </div>

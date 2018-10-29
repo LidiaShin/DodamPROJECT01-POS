@@ -10,60 +10,87 @@
 namespace DodamPOS {
     
     
-    public partial class _004report {
+    public partial class _042report_orderdetail {
         
         /// <summary>
-        /// BtnDailyReport control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnDailyReport;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TEST control.
+        /// lblONum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TEST;
+        protected global::System.Web.UI.WebControls.Label lblONum;
         
         /// <summary>
-        /// InvoiceList control.
+        /// lblCInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView InvoiceList;
+        protected global::System.Web.UI.WebControls.Label lblCInfo;
         
         /// <summary>
-        /// SearchDDL control.
+        /// lblDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SearchDDL;
+        protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
-        /// keywordbox control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox keywordbox;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// BtnSearch control.
+        /// lblTQty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSearch;
+        protected global::System.Web.UI.WebControls.Label lblTQty;
+        
+        /// <summary>
+        /// lblTAmt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTAmt;
+        
+        /// <summary>
+        /// lblTTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTTax;
+        
+        /// <summary>
+        /// lblGTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGTotal;
     }
 }

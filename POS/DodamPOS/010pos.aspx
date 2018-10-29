@@ -4,7 +4,8 @@
 <!-- TITLE MENU --> 
 	<table>
 	<tr>
-	<td style="width:200px;"><h3>Point Of Sales</h3></td>
+	<td style="width:180px;"><h3>Point Of Sales</h3></td>
+	<td style="width:400px; color:antiquewhite"> Please select quantity first,then click image to check out </td>
 	</tr>
 	</table>
 	<hr />
@@ -19,7 +20,7 @@
 
 <!-- CATEGORY BUTTONS -->
 <div>	
-<asp:Button ID="CatAll" runat="server" ClientIDMode="Static" Text="All" CommandArgument="All" OnClick="SelectCat" CssClass="CatBtn" />
+<asp:Button ID="CatAll" runat="server" ClientIDMode="Static" Text="ALL" CommandArgument="All" OnClick="SelectCat" CssClass="CatBtn" />
 <asp:Button ID="CatGarment" runat="server" ClientIDMode="Static" Text="MEAL" CommandArgument="MEAL" OnClick="SelectCat" CssClass="CatBtn" />
 <asp:Button ID="CatMagic" runat="server" ClientIDMode="Static" Text="SNACK" CommandArgument="SNACK" OnClick="SelectCat" CssClass="CatBtn" />
 <asp:Button ID="CatWeapon" runat="server" ClientIDMode="Static" Text="DRINK" CommandArgument="DRINK" OnClick="SelectCat" CssClass="CatBtn" />
@@ -89,7 +90,8 @@ No <asp:Label ID="lblCustomerNumber" runat="server" Text="-" CssClass="DisplayCu
 	
 <br />
 </div>
-<hr /> <br />
+<hr />
+<br />
 
 <!-- 2) CART TABLE DIV -->
 <div style="display: block;   overflow:auto;  height:50%">

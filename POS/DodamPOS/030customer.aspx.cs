@@ -17,8 +17,7 @@ namespace DodamPOS
             if (!IsPostBack)
                 // 최초 접속시
             {
-                BtnAddnew.Attributes.Add("onmouseover", "this.style.backgroundColor='#c1eec8'");
-                BtnAddnew.Attributes.Add("onmouseout", "this.style.backgroundColor='#f3e6f4'");
+                
 
 
                 List<string> searchKeywords = new List<string>();

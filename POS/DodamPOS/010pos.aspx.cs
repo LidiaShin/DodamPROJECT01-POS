@@ -294,8 +294,9 @@ namespace DodamPOS
 
                             if (uptemp > Convert.ToDouble(theitem.itemQuantity)) // IF USER TRY TO ADD ITEM MORE THAN AVAILABLE NUMBER (=QUANTITY)
                             {
-                                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('Too Many! ');</script>"); // ALERT MESSSAGE
+                                ClientScript.RegisterStartupScript(GetType(), "message", "<script>alert('You cannot add more than available stock ');</script>"); // ALERT MESSSAGE
                             }
+                        
 
                             else
                             {
